@@ -1,0 +1,128 @@
+{
+  "version": "1.1.0",
+  "collaborators": [
+    {
+      "partner_id": "AZ_HEALTH_001",
+      "contact_public_email": "tobaccofree@azdhs.gov",
+      "contact_public_url": "https://www.azdhs.gov",
+      "public_statement": "We support a tobacco-free Arizona through education, prevention, cessation support, and collaboration with community partners.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "cessation_support",
+        "public_health_data"
+      ],
+      "events_hosted": 24,
+      "eco_events_hosted": 6,
+      "youth_engagement_events": 12,
+      "county_scope": [
+        "Maricopa",
+        "Pima",
+        "Mohave",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "MARICOPA_SMOKEFREE_AZ",
+      "contact_public_email": "smokefree@maricopa.gov",
+      "contact_public_url": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation",
+      "public_statement": "We enforce the Smoke-Free Arizona Act and partner with communities to reduce exposure to secondhand smoke in Maricopa County.",
+      "areas_of_contribution": [
+        "policy_enforcement",
+        "tobacco_free_education",
+        "youth_prevention"
+      ],
+      "events_hosted": 18,
+      "eco_events_hosted": 5,
+      "youth_engagement_events": 7,
+      "county_scope": [
+        "Maricopa"
+      ]
+    },
+    {
+      "partner_id": "MOHAVE_SMOKEFREE_AZ",
+      "contact_public_email": "smokefree@mohave.gov",
+      "contact_public_url": "https://www.mohave.gov/departments/public-health/environmental-health/smokefree-arizona/",
+      "public_statement": "We implement Smokefree Arizona rules in Mohave County and work with businesses to maintain smoke-free environments.",
+      "areas_of_contribution": [
+        "policy_enforcement",
+        "tobacco_free_education"
+      ],
+      "events_hosted": 10,
+      "eco_events_hosted": 3,
+      "youth_engagement_events": 4,
+      "county_scope": [
+        "Mohave"
+      ]
+    },
+    {
+      "partner_id": "AZ_STAND_STATEWIDE",
+      "contact_public_email": "stand@youth.az.gov",
+      "contact_public_url": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation",
+      "public_statement": "STAND is Arizona's anti-tobacco youth coalition, empowering teens to reduce tobacco use in their schools and communities.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "tobacco_free_education",
+        "policy_enforcement"
+      ],
+      "events_hosted": 20,
+      "eco_events_hosted": 4,
+      "youth_engagement_events": 20,
+      "county_scope": [
+        "Maricopa",
+        "Pima",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "PIMA_STAND_COALITIONS",
+      "contact_public_email": "stand@pima.gov",
+      "contact_public_url": "https://www.pima.gov/2157/Coalitions",
+      "public_statement": "Pima County STAND youth coalitions work to reduce youth tobacco initiation and secondhand smoke exposure through community involvement.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "tobacco_free_education"
+      ],
+      "events_hosted": 14,
+      "eco_events_hosted": 3,
+      "youth_engagement_events": 14,
+      "county_scope": [
+        "Pima"
+      ]
+    },
+    {
+      "partner_id": "MARICOPA_PUBLIC_HEALTH_YAC",
+      "contact_public_email": "yac@maricopa.gov",
+      "contact_public_url": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation",
+      "public_statement": "The Public Health Youth Advisory Council provides teen perspectives to shape tobacco prevention and public health programming in Maricopa County.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "public_health_data"
+      ],
+      "events_hosted": 8,
+      "eco_events_hosted": 2,
+      "youth_engagement_events": 8,
+      "county_scope": [
+        "Maricopa"
+      ]
+    },
+    {
+      "partner_id": "HELPERS_BEHAVIORAL_HEALTH",
+      "contact_public_email": "info@helpersbehavioralhealth.org",
+      "contact_public_url": "https://helpersbehavioralhealth.org",
+      "public_statement": "Helpers trains behavioral health staff in Arizona to provide evidence-based tobacco treatment and support.",
+      "areas_of_contribution": [
+        "cessation_support",
+        "behavioral_health_training",
+        "public_health_data"
+      ],
+      "events_hosted": 16,
+      "eco_events_hosted": 0,
+      "youth_engagement_events": 3,
+      "county_scope": [
+        "Pima",
+        "Maricopa",
+        "Statewide"
+      ]
+    }
+  ]
+}
