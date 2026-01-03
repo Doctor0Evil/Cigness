@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Production configuration for Cigness partner ingest keys. Public keys are shown here ONLY as placeholders; real secrets must be stored in a secure secret manager.",
   "encryption": {
     "algorithm": "aes-256-gcm",
@@ -54,7 +54,6 @@
     "submit_recycling_metrics": {
       "description": "Allows partner to POST aggregated recycling metrics such as plastics and cigarette butts collected.",
       "ingest_endpoints": [
-        "/api/indgest/recycling_metrics",
         "/api/ingest/recycling_metrics"
       ]
     },
