@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "base_url": "https://api.cigness.local/v1",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/nodes",
+      "description": "List all registered nodes with basic metadata.",
+      "response_example": {
+        "nodes": [
+          { "id": "R_Node_001", "type": "R", "city": "Phoenix" },
+          { "id": "C_Node_001", "type": "C", "city": "Phoenix" }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nodes/{node_id}",
+      "description": "Fetch full profile for a specific node.",
+      "response_example": {
+        "node_id": "R_Node_001",
+        "profile": { "...": "contents of r_node_xr_profile.cigness.json" }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/telemetry/sessions",
+      "description": "Ingest aggregated XR session telemetry from R-Nodes.",
+      "request_body_example": {
+        "node_id": "R_Node_001",
+        "sessions": [
+          {
+            "session_type": "calm_break_basic",
+            "age_band": "adult",
+            "duration_minutes": 8,
+            "self_reported_craving_before": 7,
+            "self_reported_craving_after": 3,
+            "self_reported_stress_before": 8,
+            "self_reported_stress_after": 4,
+            "smoke_free_days": 5,
+            "eco_actions_logged": ["pickup_litter"]
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/telemetry/materials",
+      "description": "Ingest material flow telemetry from C- and M-Nodes.",
+      "request_body_example": {
+        "node_id": "C_Node_001",
+        "kg_plastics_collected": 120.5,
+        "kg_butts_collected": 18.2,
+        "device_takebacks": 34,
+        "timestamp_utc": "2026-01-03T18:00:00Z"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/telemetry/eco-actions",
+      "description": "Ingest eco-action events scored per eco_action_scoring.cigness.json.",
+      "request_body_example": {
+        "node_id": "R_Node_001",
+        "events": [
+          {
+            "user_id_pseudonymous": "u_abc123",
+            "action_id": "recycle_plastic",
+            "smoke_free_days_at_action": 7,
+            "score_awarded": 10,
+            "timestamp_utc": "2026-01-03T18:05:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/content-packs/{pack_id}",
+      "description": "Fetch XR content-pack metadata for node runtimes.",
+      "response_example": {
+        "pack_id": "cigness_core_v1",
+        "modules": [
+          {
+            "module_id": "calm_break_basic",
+            "age_bands": ["youth", "adult"],
+            "max_minutes_per_session": 10
+          }
+        ]
+      }
+    }
+  ]
+}
