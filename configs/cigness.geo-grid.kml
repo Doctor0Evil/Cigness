@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Cigness Geo Grid</name>
+    <open>1</open>
+
+    <Style id="rnodeStyle">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <Style id="mnodeStyle">
+      <IconStyle>
+        <color>ffffa500</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <Style id="cnodeStyle">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Example R-Node (Recycling + butt collection) -->
+    <Placemark>
+      <name>R-Node Example</name>
+      <styleUrl>#rnodeStyle</styleUrl>
+      <ExtendedData>
+        <Data name="node_id">
+          <value>CIGNESS-RNODE-001</value>
+        </Data>
+        <Data name="node_type">
+          <value>R-NODE</value>
+        </Data>
+        <Data name="avg_smoker_visits_per_day">
+          <value>350</value>
+        </Data>
+        <Data name="avg_plastic_intake_kg_per_day">
+          <value>45.0</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>-112.0740,33.4484,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Example M-Node (Micro-manufacturing) -->
+    <Placemark>
+      <name>M-Node Example</name>
+      <styleUrl>#mnodeStyle</styleUrl>
+      <ExtendedData>
+        <Data name="node_id">
+          <value>CIGNESS-MNODE-001</value>
+        </Data>
+        <Data name="node_type">
+          <value>M-NODE</value>
+        </Data>
+        <Data name="avg_smoker_visits_per_day">
+          <value>120</value>
+        </Data>
+        <Data name="avg_plastic_intake_kg_per_day">
+          <value>150.0</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>-112.0740,33.55,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Example C-Node (Circularity / device trade-in) -->
+    <Placemark>
+      <name>C-Node Example</name>
+      <styleUrl>#cnodeStyle</styleUrl>
+      <ExtendedData>
+        <Data name="node_id">
+          <value>CIGNESS-CNODE-001</value>
+        </Data>
+        <Data name="node_type">
+          <value>C-NODE</value>
+        </Data>
+        <Data name="avg_smoker_visits_per_day">
+          <value>220</value>
+        </Data>
+        <Data name="avg_plastic_intake_kg_per_day">
+          <value>30.0</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>-112.02,33.48,0</coordinates>
+      </Point>
+    </Placemark>
+
+  </Document>
+</kml>
