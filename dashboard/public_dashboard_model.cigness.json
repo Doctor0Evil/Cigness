@@ -1,0 +1,201 @@
+{
+  "version": "1.1.0",
+  "city": "Phoenix",
+  "state": "AZ",
+  "update_interval_minutes": 30,
+
+  "sections": {
+    "overview": {
+      "metrics": [
+        {
+          "id": "total_smoke_free_sessions",
+          "label": "Smoke-Free Support Sessions",
+          "type": "integer",
+          "source": "R_Node_telemetry",
+          "public": true
+        },
+        {
+          "id": "eco_actions_logged",
+          "label": "Eco Actions Logged",
+          "type": "integer",
+          "source": "R_Node_telemetry",
+          "public": true
+        },
+        {
+          "id": "kg_plastics_recycled",
+          "label": "Plastics Recycled (kg)",
+          "type": "float",
+          "source": "C_Node_telemetry",
+          "public": true
+        },
+        {
+          "id": "kg_cigarette_butts_collected",
+          "label": "Cigarette Butts Collected (kg)",
+          "type": "float",
+          "source": "C_Node_telemetry",
+          "public": true
+        },
+        {
+          "id": "devices_recycled",
+          "label": "Calm-Break Devices Recycled",
+          "type": "integer",
+          "source": "C_Node_telemetry",
+          "public": true
+        },
+        {
+          "id": "az_counties_covered",
+          "label": "Arizona Counties Covered",
+          "type": "integer",
+          "source": "partner_registry",
+          "public": true
+        },
+        {
+          "id": "active_tobacco_free_partners",
+          "label": "Active Tobacco-Free Partners",
+          "type": "integer",
+          "source": "partner_registry",
+          "public": true
+        }
+      ]
+    },
+
+    "tobacco_free_partners": {
+      "description": "Organizations across Arizona collaborating to reduce tobacco use and support youth prevention.",
+      "fields": [
+        { "id": "partner_id", "type": "string" },
+        { "id": "name", "type": "string" },
+        { "id": "organization_type", "type": "string" },
+        { "id": "city", "type": "string" },
+        { "id": "county", "type": "string" },
+        { "id": "programs_offered", "type": "array" },
+        { "id": "youth_prevention_focus", "type": "boolean" },
+        { "id": "eco_alignment_score", "type": "float" },
+        { "id": "collaboration_status", "type": "string" },
+        { "id": "primary_contact_channel", "type": "string" }
+      ],
+      "collaboration_status_values": [
+        "active",
+        "pending",
+        "invited",
+        "paused"
+      ],
+      "organization_type_values": [
+        "state_agency",
+        "county_health_department",
+        "school_district",
+        "university_program",
+        "youth_coalition",
+        "behavioral_health_provider",
+        "nonprofit"
+      ],
+      "program_tags": [
+        "tobacco_free_education",
+        "youth_prevention",
+        "cessation_support",
+        "policy_enforcement",
+        "xr_relaxation_labs",
+        "eco_action_programs",
+        "behavioral_health_support",
+        "smoke_free_enforcement"
+      ]
+    },
+
+    "collaborator_room": {
+      "description": "A transparent, opt-in directory of organizations working with Cigness.",
+      "fields": [
+        { "id": "partner_id", "type": "string" },
+        { "id": "contact_public_email", "type": "string" },
+        { "id": "contact_public_url", "type": "string" },
+        { "id": "public_statement", "type": "string" },
+        { "id": "areas_of_contribution", "type": "array" },
+        { "id": "events_hosted", "type": "integer" },
+        { "id": "eco_events_hosted", "type": "integer" },
+        { "id": "youth_engagement_events", "type": "integer" },
+        { "id": "county_scope", "type": "array" }
+      ],
+      "areas_of_contribution_values": [
+        "youth_prevention",
+        "cessation_support",
+        "public_health_data",
+        "policy_enforcement",
+        "xr_calming_spaces",
+        "eco_cleanup_events",
+        "behavioral_health_training"
+      ]
+    },
+
+    "impact_map": {
+      "description": "Geospatial layer for public-facing impact visualization.",
+      "fields": [
+        { "id": "tile_id", "type": "string" },
+        { "id": "county", "type": "string" },
+        { "id": "smoke_free_sessions", "type": "integer" },
+        { "id": "eco_actions", "type": "integer" },
+        { "id": "kg_plastics_recycled", "type": "float" },
+        { "id": "kg_butts_collected", "type": "float" },
+        { "id": "partner_presence", "type": "array" },
+        { "id": "youth_coalition_presence", "type": "boolean" }
+      ]
+    },
+
+    "youth_prevention": {
+      "description": "Metrics focused on youth engagement and prevention.",
+      "metrics": [
+        {
+          "id": "youth_sessions",
+          "label": "Youth Calm Sessions",
+          "type": "integer",
+          "source": "R_Node_telemetry"
+        },
+        {
+          "id": "youth_partners_active",
+          "label": "Active Youth Prevention Partners",
+          "type": "integer",
+          "source": "partner_registry"
+        },
+        {
+          "id": "school_events",
+          "label": "School Outreach Events",
+          "type": "integer",
+          "source": "partner_events"
+        },
+        {
+          "id": "stand_coalitions_supported",
+          "label": "STAND Coalitions Supported",
+          "type": "integer",
+          "source": "partner_registry"
+        },
+        {
+          "id": "yac_sessions_supported",
+          "label": "Youth Advisory Council Sessions Supported",
+          "type": "integer",
+          "source": "partner_events"
+        }
+      ]
+    },
+
+    "outreach_funnel": {
+      "description": "Public metrics for invitations, responses, and onboarded partners across Arizona.",
+      "metrics": [
+        {
+          "id": "partners_invited",
+          "label": "Partners Invited",
+          "type": "integer",
+          "source": "partner_outreach"
+        },
+        {
+          "id": "partners_responded",
+          "label": "Partners Responded",
+          "type": "integer",
+          "source": "partner_outreach"
+        },
+        {
+          "id": "partners_onboarded",
+          "label": "Partners Onboarded",
+          "type": "integer",
+          "source": "partner_registry"
+        }
+      ]
+    }
+  }
+}
