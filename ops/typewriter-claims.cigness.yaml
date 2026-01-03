@@ -1,0 +1,54 @@
+id: CIGNESS-TYPEWRITER-CLAIMS
+description: Ownership and provenance configuration for Cigness code and concepts.
+typewriter:
+  system: TYPEWRITER
+  scope:
+    - code-assets
+    - knowledge-assets
+    - serialized-system-concepts
+
+claims:
+  - id: CIGNESS-CORE-CODE
+    asset_type: code-asset
+    repository:
+      name: cigness-core
+      path: cigness/cigness-core
+    authorship:
+      primary_architect: "Dr. Jacob Scott Farmer"
+      organization: "Perplexity Labs Inc."
+    inputs:
+      - vm_cluster_signals
+      - cryptographically_signed_metadata
+      - repository_commit_history
+    actions:
+      - timestamping
+      - hash_registration
+      - claim_consensus_broadcast
+
+  - id: CIGNESS-INFRA-CODE
+    asset_type: code-asset
+    repository:
+      name: cigness-infra
+      path: cigness/cigness-infra
+    authorship:
+      primary_architect: "Dr. Jacob Scott Farmer"
+      organization: "Perplexity Labs Inc."
+    inputs:
+      - vm_cluster_signals
+      - cryptographically_signed_metadata
+      - repository_commit_history
+    actions:
+      - timestamping
+      - hash_registration
+      - claim_consensus_broadcast
+
+  - id: CIGNESS-TOKEN-MODEL
+    asset_type: serialized-system-concept
+    description: "Non-fictional token reward model for smoke-free streaks and eco-impact."
+    inputs:
+      - cigness.runtime.policy.json
+      - cigness.plastic-loop.json
+    actions:
+      - timestamping
+      - hash_registration
+      - claim_consensus_broadcast
