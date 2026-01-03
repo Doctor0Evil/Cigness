@@ -1,0 +1,128 @@
+{
+  "r_node_id": "R_Node_001",
+  "location": {
+    "city": "Phoenix",
+    "label": "Downtown Calm Break Hub",
+    "linked_kml_tile_ids": ["Tile_001", "Tile_002"]
+  },
+
+  "modes": {
+    "youth": {
+      "min_age": 12,
+      "max_age": 17,
+      "allowed_modules": [
+        "calm_break_basic",
+        "focus_builder",
+        "eco_world_restoration"
+      ],
+      "session_limits": {
+        "max_sessions_per_day": 2,
+        "max_minutes_per_session": 10
+      }
+    },
+    "adult": {
+      "min_age": 18,
+      "allowed_modules": [
+        "calm_break_basic",
+        "calm_break_advanced",
+        "craving_resistance_drills",
+        "focus_builder",
+        "eco_world_restoration"
+      ],
+      "session_limits": {
+        "max_sessions_per_day": 3,
+        "max_minutes_per_session": 15
+      }
+    }
+  },
+
+  "modules": {
+    "calm_break_basic": {
+      "description": "Short XR relaxation in nature-like scenes, breathing paced, no tobacco imagery.",
+      "inputs": ["head_orientation", "controller_clicks", "breathing_proxy"],
+      "targets": ["reduced_self_reported_stress"],
+      "linked_actions": [2, 4, 10, 21, 23]
+    },
+    "calm_break_advanced": {
+      "description": "More structured calm sessions for adults with craving logging before/after.",
+      "inputs": ["head_orientation", "controller_clicks", "breathing_proxy", "heart_rate_optional"],
+      "targets": ["reduced_craving_score", "improved_perceived_control"],
+      "linked_actions": [1, 2, 4, 6, 15, 23]
+    },
+    "craving_resistance_drills": {
+      "description": "Abstract ‘urge’ cues with guided non‑reaction and reappraisal, no cigarette visuals.",
+      "inputs": ["gaze_direction", "controller_hold_release"],
+      "targets": ["successful_urge_resistance_trials"],
+      "linked_actions": [3, 9, 11, 12, 14, 18, 20]
+    },
+    "focus_builder": {
+      "description": "Low‑salience working‑memory and attention tasks tied to calm, not hype.",
+      "inputs": ["controller_selection", "head_orientation"],
+      "targets": ["improved_focus_scores", "reduced_impulsivity_self_report"],
+      "linked_actions": [13, 18, 19, 20, 22]
+    },
+    "eco_world_restoration": {
+      "description": "Environment heals visually as users log smoke‑free streaks and eco‑actions.",
+      "inputs": ["simple_gestures", "eco_action_checkins"],
+      "targets": ["increased_eco_actions", "longer_smoke_free_streaks"],
+      "linked_actions": [16, 17, 25]
+    }
+  },
+
+  "telemetry": {
+    "local_only_fields": [
+      "raw_motion_data",
+      "per_session_interaction_events"
+    ],
+    "aggregated_upload_fields": [
+      "session_type",
+      "session_duration_minutes",
+      "age_band",
+      "self_reported_craving_before",
+      "self_reported_craving_after",
+      "self_reported_stress_before",
+      "self_reported_stress_after",
+      "smoke_free_days",
+      "eco_actions_logged"
+    ],
+    "privacy": {
+      "pseudonymous_ids": true,
+      "no_advertising_use": true,
+      "youth_data_stricter_retention_days": 30,
+      "adult_data_retention_days": 365
+    }
+  },
+
+  "tobacco_free_policy": {
+    "allow_nicotine_content": false,
+    "allow_smoking_visuals": false,
+    "allow_branding_references": false,
+    "content_review_required": true
+  },
+
+  "environmental_policy": {
+    "hardware_requirements": {
+      "min_recycled_plastic_content_percent": 70,
+      "takeback_required": true
+    },
+    "paperless": {
+      "allow_printed_materials": false,
+      "info_channels": [
+        "xr_overlays",
+        "digital_signage",
+        "qr_web_portal"
+      ]
+    }
+  },
+
+  "governance": {
+    "operator": "City_of_Phoenix + Cigness_Consortium",
+    "youth_guardian_consent_required": true,
+    "clinical_disclaimer": "This is a wellness and behavior-support system, not a medical treatment.",
+    "audit_log_targets": [
+      "session_limits_enforced",
+      "tobacco_free_policy_violations",
+      "environmental_policy_compliance"
+    ]
+  }
+}
