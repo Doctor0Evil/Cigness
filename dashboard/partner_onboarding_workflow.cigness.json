@@ -1,0 +1,210 @@
+{
+  "version": "1.0.0",
+  "entity": "tobacco_free_partner",
+  "registry_file": "dashboard/partner_registry.cigness.json",
+
+  "states": [
+    {
+      "id": "identified",
+      "label": "Identified",
+      "description": "Partner organization has been identified as a potential collaborator but has not been contacted.",
+      "default": true
+    },
+    {
+      "id": "invited",
+      "label": "Invited",
+      "description": "Formal invitation and information packet have been sent to the partner."
+    },
+    {
+      "id": "pending_info",
+      "label": "Pending Information",
+      "description": "Partner has expressed interest; additional information or agreements are pending."
+    },
+    {
+      "id": "compliance_review",
+      "label": "Compliance Review",
+      "description": "Partner information is under review for data, ethics, and non-fiction requirements."
+    },
+    {
+      "id": "active",
+      "label": "Active",
+      "description": "Partner is fully onboarded and visible on the public dashboard."
+    },
+    {
+      "id": "paused",
+      "label": "Paused",
+      "description": "Collaboration is temporarily paused by mutual agreement."
+    },
+    {
+      "id": "declined",
+      "label": "Declined",
+      "description": "Partner declined collaboration or did not complete onboarding."
+    }
+  ],
+
+  "registry_status_mapping": {
+    "identified": "invited",
+    "invited": "invited",
+    "pending_info": "pending",
+    "compliance_review": "pending",
+    "active": "active",
+    "paused": "paused",
+    "declined": "paused"
+  },
+
+  "required_fields_by_state": {
+    "invited": [
+      "partner_id",
+      "name",
+      "organization_type",
+      "city",
+      "county"
+    ],
+    "pending_info": [
+      "partner_id",
+      "name",
+      "organization_type",
+      "city",
+      "county",
+      "programs_offered"
+    ],
+    "compliance_review": [
+      "partner_id",
+      "name",
+      "organization_type",
+      "city",
+      "county",
+      "programs_offered",
+      "youth_prevention_focus",
+      "eco_alignment_score",
+      "primary_contact_channel"
+    ],
+    "active": [
+      "partner_id",
+      "name",
+      "organization_type",
+      "city",
+      "county",
+      "programs_offered",
+      "youth_prevention_focus",
+      "eco_alignment_score",
+      "primary_contact_channel"
+    ]
+  },
+
+  "transitions": [
+    {
+      "id": "identify_partner",
+      "from": "identified",
+      "to": "invited",
+      "label": "Send Invitation",
+      "trigger": "manual",
+      "audit_required": true,
+      "artifacts_required": [
+        "partner_profile_snapshot"
+      ]
+    },
+    {
+      "id": "record_interest",
+      "from": "invited",
+      "to": "pending_info",
+      "label": "Partner Responded",
+      "trigger": "partner_response",
+      "audit_required": true,
+      "artifacts_required": [
+        "email_confirmation",
+        "intake_form"
+      ]
+    },
+    {
+      "id": "start_compliance_review",
+      "from": "pending_info",
+      "to": "compliance_review",
+      "label": "Start Compliance Review",
+      "trigger": "manual_or_automated",
+      "audit_required": true,
+      "artifacts_required": [
+        "non_disclosure_acknowledgement",
+        "data_sharing_terms",
+        "scope_of_work"
+      ]
+    },
+    {
+      "id": "approve_partner",
+      "from": "compliance_review",
+      "to": "active",
+      "label": "Approve and Activate",
+      "trigger": "compliance_approval",
+      "audit_required": true,
+      "artifacts_required": [
+        "signed_MOU_or_agreement"
+      ],
+      "policy_checks": {
+        "non_fiction_enforced": true,
+        "no_personal_data_in_public_profile": true,
+        "gdpr_minimisation_for_telemetry": true
+      }
+    },
+    {
+      "id": "pause_collaboration",
+      "from": "active",
+      "to": "paused",
+      "label": "Pause Collaboration",
+      "trigger": "manual",
+      "audit_required": true,
+      "artifacts_required": [
+        "pause_rationale_note"
+      ]
+    },
+    {
+      "id": "resume_collaboration",
+      "from": "paused",
+      "to": "active",
+      "label": "Resume Collaboration",
+      "trigger": "manual",
+      "audit_required": true,
+      "artifacts_required": [
+        "resume_rationale_note"
+      ]
+    },
+    {
+      "id": "decline_or_close",
+      "from": "invited",
+      "to": "declined",
+      "label": "Decline or Close",
+      "trigger": "partner_decline_or_timeout",
+      "audit_required": true,
+      "artifacts_required": [
+        "decline_reason_or_timeout_log"
+      ]
+    }
+  ],
+
+  "event_hooks": {
+    "on_state_change": {
+      "log_to_data_lake": true,
+      "log_contract": "InstructionAudit",
+      "fields_hashed": [
+        "partner_id",
+        "name",
+        "organization_type",
+        "county",
+        "programs_offered"
+      ]
+    },
+    "on_activation": {
+      "update_registry_collaboration_status": "active",
+      "publish_to_public_dashboard": true,
+      "sections": [
+        "tobacco_free_partners",
+        "collaborator_room",
+        "youth_prevention",
+        "outreach_funnel"
+      ]
+    },
+    "on_pause": {
+      "update_registry_collaboration_status": "paused",
+      "publish_to_public_dashboard": true
+    }
+  }
+}
