@@ -1,0 +1,99 @@
+{
+  "id": "CIGNESS-PLASTIC-LOOP-1",
+  "description": "End-to-end recycled plastic loop for Cigness devices and eco-actions.",
+  "material_sources": [
+    {
+      "plastic_type": "PET",
+      "accepted_from": [
+        "bottles",
+        "food_containers"
+      ],
+      "preferred_streams": [
+        "MUNICIPAL-MRF",
+        "PARTNER-NGO",
+        "CIGNESS-RNODE"
+      ]
+    },
+    {
+      "plastic_type": "HDPE",
+      "accepted_from": [
+        "jugs",
+        "detergent_bottles"
+      ],
+      "preferred_streams": [
+        "MUNICIPAL-MRF",
+        "INDUSTRIAL-OFFCUTS"
+      ]
+    },
+    {
+      "plastic_type": "PP",
+      "accepted_from": [
+        "caps",
+        "straws",
+        "rigid_packaging"
+      ],
+      "preferred_streams": [
+        "MUNICIPAL-MRF"
+      ]
+    },
+    {
+      "plastic_type": "ABS",
+      "accepted_from": [
+        "electronics_housings",
+        "crates"
+      ],
+      "preferred_streams": [
+        "E-WASTE-FACILITY"
+      ]
+    }
+  ],
+  "device_shell": {
+    "model_id": "CIGNESS-CALM-BREAK-01",
+    "shell_mass_kg": 0.05,
+    "min_recycled_content_ratio": 1.0,
+    "reuse_policy": {
+      "allow_repair": true,
+      "allow_trade_in": true,
+      "end_of_life_route": "CIGNESS-CNODE"
+    }
+  },
+  "eco_impact_model": {
+    "kg_co2e_per_cigarette": 0.014,
+    "kg_co2e_per_butt_waste": 0.003,
+    "cigarettes_per_pack": 20
+  },
+  "token_reward_model": {
+    "token_symbol": "CIG-IMPACT",
+    "streak_rewards": {
+      "per_smoke_free_day": 10,
+      "per_smoke_free_week": 80,
+      "per_smoke_free_month": 400
+    },
+    "eco_action_rewards": {
+      "per_kg_plastic_recycled": 5,
+      "per_kg_cigarette_butts_collected": 25,
+      "per_cleanup_event_participation": 100
+    },
+    "post_quit_bonus": {
+      "eligible_after_days_smoke_free": 90,
+      "eco_focus_multiplier": 1.75
+    },
+    "redemption_paths": [
+      {
+        "id": "EARTH-CLEANUP-PROGRAMS",
+        "type": "DONATION",
+        "conversion_rate_cig_impact_to_fiat_equivalent": 0.01
+      },
+      {
+        "id": "FOREST-PROTECTION-FUNDS",
+        "type": "DONATION",
+        "conversion_rate_cig_impact_to_fiat_equivalent": 0.015
+      },
+      {
+        "id": "PLASTIC-RECYCLING-INFRASTRUCTURE",
+        "type": "INFRA-REINVEST",
+        "conversion_rate_cig_impact_to_fiat_equivalent": 0.02
+      }
+    ]
+  }
+}
