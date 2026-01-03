@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Machine-readable key issuance workflow for Cigness partner ingest keys. Keys are generated as random tokens, stored only as hashes, and delivered once to approved partners.",
   "trigger": {
     "event": "partner_approved",
@@ -25,11 +25,14 @@
     ],
     "youth_data_must_be_aggregated": true,
     "tobacco_free_only": true,
-    "eco_alignment_min_score": 0.7
+    "eco_alignment_min_score": 0.7,
+    "max_keys_per_partner": 3,
+    "non_fiction_only": true
   },
   "artifacts": {
     "keys_file": "api/keys/partner_keys.cigness.json",
     "permissions_matrix_file": "api/keys/partner_permissions_matrix.cigness.json",
+    "route_permission_map_file": "api/keys/route_permission_map.cigness.json",
     "audit_contract": "InstructionAudit"
   },
   "workflow": {
@@ -61,6 +64,26 @@
           "eco_alignment_min_score": 0.7,
           "youth_prevention_field": "youth_prevention_focus",
           "youth_prevention_required": true
+        }
+      },
+      {
+        "id": "enforce_max_keys_per_partner",
+        "action": "count_existing_keys",
+        "inputs": [
+          "partner_id"
+        ],
+        "outputs": [
+          "existing_key_count"
+        ],
+        "config": {
+          "file": "api/keys/partner_keys.cigness.json",
+          "array_field": "keys"
+        },
+        "on_violation": {
+          "condition": "existing_key_count >= 3",
+          "status": "error",
+          "error_code": "max_keys_exceeded",
+          "message": "Maximum number of active keys for this partner has been reached."
         }
       },
       {
@@ -126,8 +149,12 @@
             "key_hash",
             "permissions",
             "created_at",
-            "status"
-          ]
+            "status",
+            "last_used_at"
+          ],
+          "defaults": {
+            "last_used_at": null
+          }
         }
       },
       {
@@ -199,6 +226,9 @@
           "query:api_key"
         ],
         "required": true,
+        "outputs": [
+          "api_key_plain"
+        ],
         "on_missing": {
           "status": 401,
           "body": {
@@ -297,7 +327,6 @@
     "pseudonymous_keys": true,
     "personal_data_linking": "forbidden",
     "plain_text_key_logging": "forbidden",
-    "max_keys_per_partner": 3,
     "rotation": {
       "allowed": true,
       "endpoint": "/api/secure/keys/rotate",
