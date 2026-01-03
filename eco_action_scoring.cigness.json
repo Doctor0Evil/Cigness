@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "actions": [
+    {
+      "id": "pickup_litter",
+      "label": "Picked up litter",
+      "base_score": 5
+    },
+    {
+      "id": "recycle_plastic",
+      "label": "Recycled plastic items",
+      "base_score": 8
+    },
+    {
+      "id": "return_device",
+      "label": "Returned calm-break device for recycling",
+      "base_score": 20
+    },
+    {
+      "id": "use_transit",
+      "label": "Used public transit instead of driving",
+      "base_score": 10
+    },
+    {
+      "id": "join_cleanup_event",
+      "label": "Participated in community cleanup",
+      "base_score": 25
+    }
+  ],
+  "streak_multipliers": {
+    "smoke_free_days": {
+      "thresholds": [
+        { "min_days": 3, "multiplier": 1.1 },
+        { "min_days": 7, "multiplier": 1.25 },
+        { "min_days": 30, "multiplier": 1.5 }
+      ]
+    }
+  },
+  "telemetry_mapping": {
+    "upload_fields": [
+      "user_id_pseudonymous",
+      "action_id",
+      "timestamp",
+      "smoke_free_days_at_action",
+      "score_awarded"
+    ]
+  }
+}
