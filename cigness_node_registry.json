@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "city": "Phoenix",
+  "nodes": {
+    "R": [
+      "R_Node_001",
+      "R_Node_002",
+      "R_Node_003"
+    ],
+    "C": [
+      "C_Node_001",
+      "C_Node_002",
+      "C_Node_003"
+    ],
+    "M": [
+      "M_Node_001",
+      "M_Node_002"
+    ],
+    "P": [
+      "P_Node_001",
+      "P_Node_002"
+    ]
+  },
+  "links": [
+    {
+      "from": "C_Node_001",
+      "to": "M_Node_001",
+      "relation": "material_flow"
+    },
+    {
+      "from": "C_Node_002",
+      "to": "M_Node_001",
+      "relation": "material_flow"
+    },
+    {
+      "from": "C_Node_003",
+      "to": "M_Node_001",
+      "relation": "material_flow"
+    },
+    {
+      "from": "M_Node_001",
+      "to": "R_Node_001",
+      "relation": "device_supply"
+    },
+    {
+      "from": "M_Node_001",
+      "to": "R_Node_002",
+      "relation": "device_supply"
+    },
+    {
+      "from": "M_Node_002",
+      "to": "R_Node_003",
+      "relation": "device_supply"
+    },
+    {
+      "from": "P_Node_001",
+      "to": "R_Node_001",
+      "relation": "policy_zone"
+    },
+    {
+      "from": "P_Node_001",
+      "to": "C_Node_001",
+      "relation": "policy_zone"
+    }
+  ]
+}
