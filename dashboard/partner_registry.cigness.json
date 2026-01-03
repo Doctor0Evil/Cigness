@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "partners": [
     {
       "partner_id": "AZ_HEALTH_001",
@@ -125,6 +125,114 @@
       "eco_alignment_score": 0.8,
       "collaboration_status": "invited",
       "primary_contact_channel": "https://helpersbehavioralhealth.org"
+    },
+    {
+      "partner_id": "AZCTA_001",
+      "name": "Arizona's Community Tobacco-Free Alliance (AZCTA)",
+      "organization_type": "nonprofit",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "tobacco_free_education",
+        "youth_prevention",
+        "cessation_support"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.91,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://www.lung.org/az/azcta"
+    },
+    {
+      "partner_id": "ACAS_001",
+      "name": "Arizonans Concerned About Smoking, Inc. (ACAS)",
+      "organization_type": "nonprofit",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "tobacco_free_education",
+        "policy_enforcement"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.89,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://acasinc.net/"
+    },
+    {
+      "partner_id": "ASHLINE_001",
+      "name": "Arizona Smokers' Helpline (ASHLine)",
+      "organization_type": "cessation_program",
+      "city": "Tucson",
+      "county": "Pima",
+      "programs_offered": [
+        "cessation_support",
+        "youth_prevention",
+        "behavioral_health_support"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.85,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://helpersbehavioralhealth.org/pages/the-ashline"
+    },
+    {
+      "partner_id": "NAQC_001",
+      "name": "North American Quitline Consortium",
+      "organization_type": "nonprofit",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "cessation_support",
+        "tobacco_free_education"
+      ],
+      "youth_prevention_focus": false,
+      "eco_alignment_score": 0.82,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://www.naquitline.org/"
+    },
+    {
+      "partner_id": "PIMA_CTPC_001",
+      "name": "Pima County Commercial Tobacco Prevention & Cessation",
+      "organization_type": "county_health_department",
+      "city": "Tucson",
+      "county": "Pima",
+      "programs_offered": [
+        "tobacco_free_education",
+        "youth_prevention",
+        "cessation_support"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.88,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://www.pima.gov/2152/Commercial-Tobacco-Prevention-Cessation"
+    },
+    {
+      "partner_id": "AZSFL_001",
+      "name": "Arizona Smoke-Free Living",
+      "organization_type": "nonprofit",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "smoke_free_enforcement",
+        "tobacco_free_education"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.87,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "http://www.azsmokefreeliving.org/about-us-2/"
+    },
+    {
+      "partner_id": "YAVAPAI_TP_001",
+      "name": "Yavapai County Tobacco Prevention",
+      "organization_type": "county_health_department",
+      "city": "Prescott",
+      "county": "Yavapai",
+      "programs_offered": [
+        "tobacco_free_education",
+        "youth_prevention"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.83,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://healthyyavapai.com/tobacco-prevention/"
     }
   ]
 }
