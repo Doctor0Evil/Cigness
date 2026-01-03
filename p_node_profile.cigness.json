@@ -1,0 +1,61 @@
+{
+  "p_node_id": "P_Node_001",
+  "location": {
+    "city": "Phoenix",
+    "label": "Downtown Policy Zone Anchor",
+    "linked_kml_tile_ids": ["Tile_001", "Tile_002"]
+  },
+
+  "node_type": "P",
+  "role": [
+    "tobacco_retail_density_control",
+    "smoke_free_zone_definition",
+    "cigness_node_prioritization"
+  ],
+
+  "policies": {
+    "tobacco_retail_density": {
+      "max_retailers_per_km2": 3,
+      "min_distance_between_retailers_m": 200,
+      "license_cap_enabled": true
+    },
+    "smoke_free_zones": {
+      "plazas": true,
+      "parks": true,
+      "transit_stops": true
+    },
+    "cigness_priority": {
+      "preferential_permitting_for": [
+        "R_Nodes",
+        "C_Nodes",
+        "M_Nodes"
+      ],
+      "fast_track_review_days": 15
+    }
+  },
+
+  "integration": {
+    "jurisdiction": "City_of_Phoenix",
+    "reference_documents": [
+      "Phoenix_TOR_zoning_standards",
+      "Cigness_Policy_Framework_v1"
+    ]
+  },
+
+  "telemetry": {
+    "aggregated_upload_fields": [
+      "active_tobacco_licenses",
+      "license_applications_denied",
+      "smoke_free_zone_violations_reported"
+    ]
+  },
+
+  "governance": {
+    "operator": "City_of_Phoenix",
+    "audit_log_targets": [
+      "license_decisions",
+      "policy_changes",
+      "zone_boundary_updates"
+    ]
+  }
+}
