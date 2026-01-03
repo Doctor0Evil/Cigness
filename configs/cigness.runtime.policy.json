@@ -1,0 +1,133 @@
+{
+  "system": "CIGNESS-SYSTEM",
+  "version": "1.0.0",
+  "updated_at_utc": "2026-01-03T14:35:00Z",
+  "layers": {
+    "virtasys": {
+      "role": "virtual-os-cluster-subscriber",
+      "description": "Cigness health + eco-impact workloads on Virta-Sys virtual clusters.",
+      "delegator_routing": {
+        "mode": "consensus-validated",
+        "validation_points": "autonomous",
+        "human_mutation": "forbidden"
+      },
+      "resources": {
+        "compute": {
+          "scaling": "infinite-delegation-model",
+          "autoscale": true
+        },
+        "storage": {
+          "cache_actions": true,
+          "cache_lifecycle": "always-active"
+        }
+      }
+    },
+    "vsc_artemis": {
+      "role": "system-brain-application-profile",
+      "description": "Cigness cessation, token rewards, and eco-impact coordination.",
+      "components": {
+        "data_lake": {
+          "id": "DATA-LAKE",
+          "role": "knowledge-ingestion",
+          "sanitization": {
+            "remove_fictional_content": true,
+            "strip_pii": true,
+            "normalize_format": true
+          },
+          "pipelines": [
+            "FSOBSERVERPIPELINE",
+            "XRSTREAMPIPELINE",
+            "CIGNESS-HEALTH-PIPELINE",
+            "CIGNESS-ECO-PIPELINE"
+          ]
+        },
+        "typewriter": {
+          "id": "TYPEWRITER",
+          "role": "copy-protection-and-patent-ruling",
+          "scope": [
+            "code-assets",
+            "knowledge-assets",
+            "serialized-system-concepts"
+          ]
+        },
+        "dream_catcher": {
+          "id": "DREAM-CATCHER",
+          "role": "no-harm-safety-net",
+          "constraints": {
+            "no_harm_policy": {
+              "targets": [
+                "consciousness-states",
+                "soul-linked-sessions"
+              ],
+              "violations": "hard-block"
+            }
+          },
+          "output_generation": {
+            "allow_fiction": false,
+            "allow_hypothetical": false,
+            "allow_theoretical_only": false,
+            "require_real_world_anchor": true
+          }
+        },
+        "instruction_audit": {
+          "contract": "InstructionAudit",
+          "network": "hyperledger-sideanchor-devm",
+          "log_context_for": [
+            "CIGNESS-HEALTH-INSTRUCTION",
+            "CIGNESS-ECO-INSTRUCTION",
+            "CIGNESS-TOKEN-REWARD"
+          ]
+        }
+      }
+    }
+  },
+  "cigness_policies": {
+    "health": {
+      "require_clinical_anchor": true,
+      "risk_bands": [
+        "Low",
+        "Moderate",
+        "High",
+        "Critical"
+      ],
+      "max_abstinence_gap_days_for_continuous_streak": 2
+    },
+    "eco_impact": {
+      "require_real_litter_collection": true,
+      "require_recycling_partner_or_proof": true,
+      "allowed_actions": [
+        "RECYCLE_PLASTIC",
+        "RECYCLE_METAL",
+        "CIGARETTE_BUTT_COLLECTION",
+        "COMMUNITY_CLEANUP",
+        "CERTIFIED_DONATION"
+      ]
+    },
+    "token_rewards": {
+      "token_symbol": "CIG-IMPACT",
+      "on_chain_logging": true,
+      "base_rewards": {
+        "smoke_free_per_day": 10,
+        "eco_action_per_verified_event": 25,
+        "donation_per_verified_unit": 50
+      },
+      "bonus_multipliers": {
+        "streak_30_days": 1.25,
+        "streak_90_days": 1.5,
+        "streak_365_days": 2.0,
+        "post_quit_eco_focus": 1.75
+      },
+      "caps": {
+        "max_daily_tokens_per_user": 500,
+        "max_annual_tokens_per_user": 150000
+      },
+      "cross_system_contributions": {
+        "allow_redemption_to": [
+          "EARTH-CLEANUP-PROGRAMS",
+          "FOREST-PROTECTION-FUNDS",
+          "PLASTIC-RECYCLING-INFRASTRUCTURE"
+        ]
+      }
+    }
+  }
+}
