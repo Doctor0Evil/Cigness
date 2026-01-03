@@ -1,0 +1,84 @@
+id: CIGNESS-DATALAKE-INGEST
+description: Cigness health, eco-impact, and token-activity ingestion into Virta-Sys Data-Lake.
+sources:
+  smoker_journeys:
+    path: data/smoker_journeys/
+    mode: append
+    format: jsonl
+    schema:
+      profile_id: string
+      packs_per_day: float
+      years_smoked: float
+      region_code: string
+      last_smoked_at_utc: string
+      updated_at_utc: string
+  eco_actions:
+    path: data/eco_actions/
+    mode: append
+    format: jsonl
+    schema:
+      profile_id: string
+      action_type: string         # RECYCLE_PLASTIC, CIGARETTE_BUTT_COLLECTION, COMMUNITY_CLEANUP, CERTIFIED_DONATION
+      quantity: float             # kg or count depending on action_type
+      location_lat: float
+      location_lon: float
+      timestamp_utc: string
+  token_events:
+    path: data/token_events/
+    mode: append
+    format: jsonl
+    schema:
+      profile_id: string
+      event_type: string          # STREAK_DAY, STREAK_WEEK, STREAK_MONTH, ECO_ACTION, POST_QUIT_BONUS
+      tokens_minted: float
+      reference_id: string
+      timestamp_utc: string
+
+pipelines:
+  - id: CIGNESS-HEALTH-PIPELINE
+    description: Ingest smoker profiles and abstinence streaks.
+    source: smoker_journeys
+    sanitization:
+      remove_fictional_content: true
+      strip_pii: true
+      normalize_format: true
+    compliance:
+      gdpr: true
+      require_real_world_anchor: true
+    routing:
+      knowledgebase_topic: CIGNESS-HEALTH
+      audit_contract: InstructionAudit
+      audit_context_kind: CIGNESS-HEALTH-INSTRUCTION
+
+  - id: CIGNESS-ECO-PIPELINE
+    description: Ingest eco-actions linked to Cigness users.
+    source: eco_actions
+    sanitization:
+      remove_fictional_content: true
+      strip_pii: true
+      normalize_format: true
+    compliance:
+      gdpr: true
+      require_real_world_anchor: true
+    routing:
+      knowledgebase_topic: CIGNESS-ECO
+      audit_contract: InstructionAudit
+      audit_context_kind: CIGNESS-ECO-INSTRUCTION
+
+  - id: CIGNESS-TOKEN-PIPELINE
+    description: Ingest and verify token reward events for CIG-IMPACT.
+    source: token_events
+    sanitization:
+      remove_fictional_content: true
+      strip_pii: true
+      normalize_format: true
+    validation:
+      check_against_streak_rules: true
+      check_against_eco_rules: true
+      enforce_caps:
+        max_daily_tokens_per_user: 500
+        max_annual_tokens_per_user: 150000
+    routing:
+      audit_contract: InstructionAudit
+      audit_context_kind: CIGNESS-TOKEN-REWARD
+      compliance_status_field: compliance_status
