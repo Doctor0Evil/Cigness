@@ -1,0 +1,325 @@
+{
+  "version": "1.1.0",
+  "description": "Machine-readable key issuance workflow for Cigness partner ingest keys. Keys are generated as random tokens, stored only as hashes, and delivered once to approved partners.",
+  "trigger": {
+    "event": "partner_approved",
+    "source": "dashboard/partner_onboarding_workflow.cigness.json",
+    "required_status": "active",
+    "required_fields": [
+      "partner_id",
+      "name",
+      "organization_type",
+      "city",
+      "county",
+      "programs_offered",
+      "youth_prevention_focus",
+      "eco_alignment_score"
+    ]
+  },
+  "constraints": {
+    "disallow_plaintext_storage": true,
+    "min_token_length": 32,
+    "max_token_length": 64,
+    "allowed_prefixes": [
+      "pk_live_"
+    ],
+    "youth_data_must_be_aggregated": true,
+    "tobacco_free_only": true,
+    "eco_alignment_min_score": 0.7
+  },
+  "artifacts": {
+    "keys_file": "api/keys/partner_keys.cigness.json",
+    "permissions_matrix_file": "api/keys/partner_permissions_matrix.cigness.json",
+    "audit_contract": "InstructionAudit"
+  },
+  "workflow": {
+    "id": "CIGNESS_KEY_ISSUANCE",
+    "steps": [
+      {
+        "id": "load_partner_record",
+        "action": "read_partner",
+        "source": "dashboard/partner_registry.cigness.json",
+        "inputs": [
+          "partner_id"
+        ],
+        "outputs": [
+          "partner_record"
+        ],
+        "validations": {
+          "must_exist": true,
+          "status_field": "collaboration_status",
+          "allowed_status_values": [
+            "active",
+            "pending"
+          ],
+          "tobacco_free_field": "programs_offered",
+          "tobacco_free_required_tags": [
+            "tobacco_free_education",
+            "youth_prevention"
+          ],
+          "eco_alignment_field": "eco_alignment_score",
+          "eco_alignment_min_score": 0.7,
+          "youth_prevention_field": "youth_prevention_focus",
+          "youth_prevention_required": true
+        }
+      },
+      {
+        "id": "generate_key",
+        "action": "create_random_token",
+        "inputs": [],
+        "outputs": [
+          "api_key_plain"
+        ],
+        "config": {
+          "length": 48,
+          "prefix": "pk_live_",
+          "character_set": "a-zA-Z0-9-_"
+        }
+      },
+      {
+        "id": "hash_key",
+        "action": "sha256_hash",
+        "inputs": [
+          "api_key_plain"
+        ],
+        "outputs": [
+          "api_key_hash"
+        ],
+        "config": {
+          "hash_prefix": "sha256:",
+          "salt_strategy": "per_partner_id",
+          "salt_source": "partner_id"
+        }
+      },
+      {
+        "id": "assign_permissions",
+        "action": "lookup_permissions",
+        "inputs": [
+          "partner_record"
+        ],
+        "outputs": [
+          "permissions"
+        ],
+        "config": {
+          "matrix_file": "api/keys/partner_permissions_matrix.cigness.json",
+          "fallback_permissions": [
+            "submit_events"
+          ]
+        }
+      },
+      {
+        "id": "compose_record",
+        "action": "build_key_record",
+        "inputs": [
+          "partner_id",
+          "api_key_hash",
+          "permissions"
+        ],
+        "outputs": [
+          "key_record"
+        ],
+        "config": {
+          "status": "active",
+          "created_at_source": "system_utc_now",
+          "fields": [
+            "partner_id",
+            "key_hash",
+            "permissions",
+            "created_at",
+            "status"
+          ]
+        }
+      },
+      {
+        "id": "store_record",
+        "action": "append_record",
+        "inputs": [
+          "key_record"
+        ],
+        "outputs": [],
+        "config": {
+          "file": "api/keys/partner_keys.cigness.json",
+          "format": "json",
+          "array_field": "keys"
+        }
+      },
+      {
+        "id": "audit_issuance",
+        "action": "log_to_blockchain",
+        "inputs": [
+          "partner_id",
+          "permissions",
+          "api_key_hash"
+        ],
+        "outputs": [
+          "audit_tx_hash"
+        ],
+        "config": {
+          "contract": "InstructionAudit",
+          "method": "logContext",
+          "fields_hashed": [
+            "partner_id",
+            "api_key_hash",
+            "permissions"
+          ],
+          "compliance_status": "KEY_ISSUED"
+        }
+      },
+      {
+        "id": "deliver_key",
+        "action": "send_to_partner",
+        "inputs": [
+          "partner_id",
+          "api_key_plain"
+        ],
+        "outputs": [],
+        "config": {
+          "methods": [
+            "email",
+            "ui_display_once"
+          ],
+          "email_template_id": "CIGNESS_PARTNER_API_KEY_ISSUED",
+          "show_once": true,
+          "plaintext_persistence": "forbidden",
+          "note": "Key is shown once to partner and is not stored in plaintext anywhere."
+        }
+      }
+    ]
+  },
+  "validation_middleware": {
+    "name": "CIGNESS_API_KEY_VALIDATION",
+    "applies_to_paths": [
+      "/api/ingest/*"
+    ],
+    "steps": [
+      {
+        "id": "extract_key",
+        "from": [
+          "header:X-API-Key",
+          "query:api_key"
+        ],
+        "required": true,
+        "on_missing": {
+          "status": 401,
+          "body": {
+            "error": "missing_api_key"
+          }
+        }
+      },
+      {
+        "id": "hash_key",
+        "action": "sha256_hash",
+        "inputs": [
+          "api_key_plain"
+        ],
+        "outputs": [
+          "api_key_hash"
+        ],
+        "config": {
+          "hash_prefix": "sha256:",
+          "salt_strategy": "per_partner_id_if_available"
+        }
+      },
+      {
+        "id": "lookup_key",
+        "action": "find_key_record",
+        "inputs": [
+          "api_key_hash"
+        ],
+        "outputs": [
+          "key_record"
+        ],
+        "config": {
+          "file": "api/keys/partner_keys.cigness.json",
+          "array_field": "keys"
+        },
+        "on_not_found": {
+          "status": 401,
+          "body": {
+            "error": "invalid_or_revoked_key"
+          }
+        }
+      },
+      {
+        "id": "check_status",
+        "action": "validate_status",
+        "inputs": [
+          "key_record"
+        ],
+        "outputs": [],
+        "config": {
+          "allowed_status": [
+            "active"
+          ]
+        },
+        "on_invalid": {
+          "status": 401,
+          "body": {
+            "error": "invalid_or_revoked_key"
+          }
+        }
+      },
+      {
+        "id": "check_permissions",
+        "action": "validate_permissions_for_route",
+        "inputs": [
+          "key_record",
+          "request_path",
+          "request_method"
+        ],
+        "outputs": [],
+        "config": {
+          "route_permission_map_file": "api/keys/route_permission_map.cigness.json"
+        },
+        "on_insufficient": {
+          "status": 403,
+          "body": {
+            "error": "insufficient_permissions"
+          }
+        }
+      },
+      {
+        "id": "update_last_used",
+        "action": "touch_key_record",
+        "inputs": [
+          "key_record"
+        ],
+        "outputs": [],
+        "config": {
+          "file": "api/keys/partner_keys.cigness.json",
+          "timestamp_field": "last_used_at",
+          "timestamp_source": "system_utc_now"
+        }
+      }
+    ]
+  },
+  "security": {
+    "pseudonymous_keys": true,
+    "personal_data_linking": "forbidden",
+    "plain_text_key_logging": "forbidden",
+    "max_keys_per_partner": 3,
+    "rotation": {
+      "allowed": true,
+      "endpoint": "/api/secure/keys/rotate",
+      "on_rotation": {
+        "invalidate_old_key": true,
+        "status_to_set": "revoked",
+        "audit_compliance_status": "KEY_ROTATED"
+      }
+    },
+    "revocation": {
+      "allowed": true,
+      "endpoint": "/api/secure/keys/revoke",
+      "on_revoke": {
+        "status_to_set": "revoked",
+        "audit_compliance_status": "KEY_REVOKED",
+        "auto_revoke_on_violation": true
+      }
+    },
+    "youth_data_policy": {
+      "only_aggregated_metrics": true,
+      "disallow_personal_identifiers": true,
+      "disallow_exact_birthdates": true
+    }
+  }
+}
