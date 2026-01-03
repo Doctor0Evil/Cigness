@@ -1,0 +1,360 @@
+{
+  "version": "1.0.0",
+  "title": "Cigness Public Dashboard API",
+  "description": "Read-only API for public Cigness dashboard metrics, Arizona tobacco-free partners, and onboarding funnel aggregates.",
+  "base_path": "/api/public",
+  "protocols": [
+    "https"
+  ],
+  "auth": {
+    "type": "none",
+    "notes": "All endpoints are read-only and return only aggregated, anonymized, and non-personal data."
+  },
+
+  "resources": {
+    "/metrics/overview": {
+      "methods": {
+        "GET": {
+          "summary": "Get city-wide overview metrics",
+          "description": "Returns aggregated smoke-free sessions, eco actions, recycling metrics, and partner counts.",
+          "query_params": {
+            "city": {
+              "type": "string",
+              "required": false,
+              "default": "Phoenix"
+            },
+            "state": {
+              "type": "string",
+              "required": false,
+              "default": "AZ"
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "city": { "type": "string" },
+                "state": { "type": "string" },
+                "total_smoke_free_sessions": { "type": "integer" },
+                "eco_actions_logged": { "type": "integer" },
+                "kg_plastics_recycled": { "type": "number" },
+                "kg_cigarette_butts_collected": { "type": "number" },
+                "devices_recycled": { "type": "integer" },
+                "az_counties_covered": { "type": "integer" },
+                "active_tobacco_free_partners": { "type": "integer" }
+              },
+              "required": [
+                "city",
+                "state",
+                "total_smoke_free_sessions",
+                "eco_actions_logged",
+                "kg_plastics_recycled",
+                "kg_cigarette_butts_collected",
+                "devices_recycled",
+                "az_counties_covered",
+                "active_tobacco_free_partners"
+              ]
+            }
+          },
+          "cache": {
+            "enabled": true,
+            "ttl_seconds": 300
+          }
+        }
+      }
+    },
+
+    "/metrics/youth_prevention": {
+      "methods": {
+        "GET": {
+          "summary": "Get youth prevention metrics",
+          "description": "Returns aggregated youth calm sessions, youth partners, and school events with no individual-level data.",
+          "query_params": {
+            "county": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "youth_sessions": { "type": "integer" },
+                "youth_partners_active": { "type": "integer" },
+                "school_events": { "type": "integer" },
+                "stand_coalitions_supported": { "type": "integer" },
+                "yac_sessions_supported": { "type": "integer" }
+              },
+              "required": [
+                "youth_sessions",
+                "youth_partners_active",
+                "school_events",
+                "stand_coalitions_supported",
+                "yac_sessions_supported"
+              ]
+            }
+          },
+          "privacy": {
+            "no_personal_data": true,
+            "minimum_aggregation_threshold": 5
+          }
+        }
+      }
+    },
+
+    "/impact/map": {
+      "methods": {
+        "GET": {
+          "summary": "Get impact map tiles",
+          "description": "Returns geospatial tiles with aggregated impact metrics and partner presence flags.",
+          "query_params": {
+            "county": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "tiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "tile_id": { "type": "string" },
+                      "county": { "type": "string" },
+                      "smoke_free_sessions": { "type": "integer" },
+                      "eco_actions": { "type": "integer" },
+                      "kg_plastics_recycled": { "type": "number" },
+                      "kg_butts_collected": { "type": "number" },
+                      "partner_presence": { "type": "array", "items": { "type": "string" } },
+                      "youth_coalition_presence": { "type": "boolean" }
+                    },
+                    "required": [
+                      "tile_id",
+                      "county",
+                      "smoke_free_sessions",
+                      "eco_actions",
+                      "kg_plastics_recycled",
+                      "kg_butts_collected",
+                      "partner_presence",
+                      "youth_coalition_presence"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "tiles"
+              ]
+            }
+          }
+        }
+      }
+    },
+
+    "/partners": {
+      "methods": {
+        "GET": {
+          "summary": "List tobacco-free partners",
+          "description": "Returns public-safe partner profiles, filtered by status, county, or organization type.",
+          "query_params": {
+            "status": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "active",
+                "pending",
+                "invited",
+                "paused"
+              ]
+            },
+            "county": {
+              "type": "string",
+              "required": false
+            },
+            "organization_type": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "partners": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "partner_id": { "type": "string" },
+                      "name": { "type": "string" },
+                      "organization_type": { "type": "string" },
+                      "city": { "type": "string" },
+                      "county": { "type": "string" },
+                      "programs_offered": { "type": "array", "items": { "type": "string" } },
+                      "youth_prevention_focus": { "type": "boolean" },
+                      "eco_alignment_score": { "type": "number" },
+                      "collaboration_status": { "type": "string" },
+                      "primary_contact_channel": { "type": "string" }
+                    },
+                    "required": [
+                      "partner_id",
+                      "name",
+                      "organization_type",
+                      "city",
+                      "county",
+                      "programs_offered",
+                      "youth_prevention_focus",
+                      "eco_alignment_score",
+                      "collaboration_status",
+                      "primary_contact_channel"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "partners"
+              ]
+            }
+          }
+        }
+      }
+    },
+
+    "/partners/{partner_id}": {
+      "methods": {
+        "GET": {
+          "summary": "Get partner public profile",
+          "description": "Returns a single partner's public-safe profile and collaborator-room data.",
+          "path_params": {
+            "partner_id": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "partner": {
+                  "type": "object",
+                  "properties": {
+                    "partner_id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "organization_type": { "type": "string" },
+                    "city": { "type": "string" },
+                    "county": { "type": "string" },
+                    "programs_offered": { "type": "array", "items": { "type": "string" } },
+                    "youth_prevention_focus": { "type": "boolean" },
+                    "eco_alignment_score": { "type": "number" },
+                    "collaboration_status": { "type": "string" },
+                    "primary_contact_channel": { "type": "string" }
+                  },
+                  "required": [
+                    "partner_id",
+                    "name",
+                    "organization_type",
+                    "city",
+                    "county",
+                    "programs_offered",
+                    "youth_prevention_focus",
+                    "eco_alignment_score",
+                    "collaboration_status",
+                    "primary_contact_channel"
+                  ]
+                },
+                "collaborator_profile": {
+                  "type": "object",
+                  "properties": {
+                    "contact_public_email": { "type": "string" },
+                    "contact_public_url": { "type": "string" },
+                    "public_statement": { "type": "string" },
+                    "areas_of_contribution": { "type": "array", "items": { "type": "string" } },
+                    "events_hosted": { "type": "integer" },
+                    "eco_events_hosted": { "type": "integer" },
+                    "youth_engagement_events": { "type": "integer" },
+                    "county_scope": { "type": "array", "items": { "type": "string" } }
+                  },
+                  "required": [
+                    "contact_public_email",
+                    "contact_public_url",
+                    "public_statement",
+                    "areas_of_contribution",
+                    "events_hosted",
+                    "eco_events_hosted",
+                    "youth_engagement_events",
+                    "county_scope"
+                  ]
+                }
+              },
+              "required": [
+                "partner",
+                "collaborator_profile"
+              ]
+            }
+          }
+        }
+      }
+    },
+
+    "/outreach/funnel": {
+      "methods": {
+        "GET": {
+          "summary": "Get outreach funnel aggregates",
+          "description": "Returns counts for invited, responded, and onboarded partners for transparency.",
+          "query_params": {
+            "county": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "response": {
+            "status": 200,
+            "body_schema": {
+              "type": "object",
+              "properties": {
+                "partners_invited": { "type": "integer" },
+                "partners_responded": { "type": "integer" },
+                "partners_onboarded": { "type": "integer" }
+              },
+              "required": [
+                "partners_invited",
+                "partners_responded",
+                "partners_onboarded"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rate_limits": {
+    "default": {
+      "requests_per_minute": 120,
+      "burst": 240
+    }
+  },
+
+  "compliance": {
+    "non_fiction_enforced": true,
+    "personal_data_exposed": false,
+    "gdpr_minimisation": true,
+    "logging": {
+      "instruction_audit_enabled": true,
+      "log_contract": "InstructionAudit",
+      "fields_hashed": [
+        "path",
+        "query_params",
+        "county",
+        "partner_id"
+      ]
+    }
+  }
+}
