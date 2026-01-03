@@ -1,0 +1,42 @@
+{
+  "pack_id": "cigness_core_v1",
+  "description": "Core XR modules for calm, focus, craving resistance, and eco-world restoration.",
+  "modules": [
+    {
+      "module_id": "calm_break_basic",
+      "age_bands": ["youth", "adult"],
+      "max_minutes_per_session": 10,
+      "scenes": [
+        "forest_clear_morning",
+        "desert_skyline_cool",
+        "riverbank_dusk"
+      ],
+      "inputs": ["head_orientation", "controller_clicks", "breathing_proxy"]
+    },
+    {
+      "module_id": "craving_resistance_drills",
+      "age_bands": ["adult"],
+      "max_minutes_per_session": 12,
+      "scenes": [
+        "abstract_urge_field",
+        "calm_room_minimal"
+      ],
+      "inputs": ["gaze_direction", "controller_hold_release"]
+    },
+    {
+      "module_id": "eco_world_restoration",
+      "age_bands": ["youth", "adult"],
+      "max_minutes_per_session": 15,
+      "scenes": [
+        "city_polluted_to_clean",
+        "park_dry_to_green"
+      ],
+      "inputs": ["simple_gestures", "eco_action_checkins"]
+    }
+  ],
+  "tobacco_free_constraints": {
+    "allow_smoke_visuals": false,
+    "allow_nicotine_references": false,
+    "allow_branding": false
+  }
+}
