@@ -1,0 +1,77 @@
+{
+  "m_node_id": "M_Node_001",
+  "location": {
+    "city": "Phoenix",
+    "label": "South 19th Ave Micro-Factory",
+    "linked_kml_tile_ids": ["Tile_003", "Tile_004"]
+  },
+
+  "node_type": "M",
+  "role": [
+    "plastic_pre_processing",
+    "pellet_production",
+    "device_shell_manufacturing",
+    "emergency_container_manufacturing"
+  ],
+
+  "inputs": {
+    "from_c_nodes": [
+      "PET_pellets",
+      "HDPE_pellets",
+      "PP_pellets",
+      "cleaned_filter_composites"
+    ],
+    "quality_requirements": {
+      "max_contaminant_percent": 2,
+      "moisture_threshold_percent": 1
+    }
+  },
+
+  "outputs": {
+    "products": [
+      "calm_break_device_shells",
+      "reusable_crates",
+      "emergency_water_containers"
+    ],
+    "daily_capacity": {
+      "device_shells": 500,
+      "reusable_crates": 200,
+      "water_containers": 800
+    }
+  },
+
+  "energy_profile": {
+    "target_kwh_per_kg": 0.6,
+    "renewable_preference": true,
+    "load_smoothing_enabled": true
+  },
+
+  "environmental_policy": {
+    "zero_virgin_plastic": true,
+    "scrap_recycling_required": true,
+    "emissions_reporting_interval_days": 30
+  },
+
+  "telemetry": {
+    "local_only_fields": [
+      "machine_temperatures",
+      "line_speed",
+      "fault_codes"
+    ],
+    "aggregated_upload_fields": [
+      "kg_input_by_material",
+      "kg_output_by_product",
+      "kwh_consumed",
+      "downtime_minutes"
+    ]
+  },
+
+  "governance": {
+    "operator": "Cigness_Consortium + Municipal_Partner",
+    "audit_log_targets": [
+      "material_balance",
+      "energy_profile_compliance",
+      "zero_virgin_plastic_enforcement"
+    ]
+  }
+}
