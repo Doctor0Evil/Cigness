@@ -1,0 +1,73 @@
+id: CIGNESS-DREAMCATCHER-XR
+description: Dream-Catcher wiring for any XR or neuro-stimulation interfaces in Cigness.
+xrnode:
+  id: CIGNESS-XR-NODE-LOCAL
+  mode: self-hosted-edge
+  ownerscope: singleuser
+  hardwareprofile:
+    class: edgegpuappliance
+    trustedexecution: true
+    persistentruntime: true
+  network:
+    ingress:
+      - proto: webrtc
+      - proto: webxr
+    egress:
+      - proto: consensusbus
+      - proto: datalakeingest
+
+dreamcatcher:
+  enabled: true
+  scope: XRONLY
+  noharmpolicy:
+    enforce: true
+    block_on_violation: true
+    log_violation: true
+  fictionfilter:
+    remove_fictional_content: true
+    remove_hypothetical_content: true
+    remove_theoretical_only_content: true
+
+iopolicies:
+  input:
+    sanitize_on_ingest: true
+    strip_pii: true
+    gdpr_minimisation: true
+    allowedchannels:
+      - XrSessions
+      - XrBiometrics
+      - XrEnvironment
+  output:
+    allow_fiction: false
+    allow_hypothetical: false
+    allow_theoretical_only: false
+    require_real_world_anchor: true
+  userrules:
+    storage: LocalImmutable
+    mergestrategy:
+      overlay_system_rules: true
+      downgrade_user_rules: false
+
+karma:
+  enabled: true
+  route: ConsensusOnly
+  negativetriggers:
+    - id: XR-UNCONSENTED-BIOMETRICS
+      description: "Biometric collection without explicit user rule allow."
+      channel: XrBiometrics
+      severity: High
+    - id: XR-COERCIVE-INTERACTION
+      description: "XR interaction that attempts to manipulate or coerce cessation decisions."
+      channel: XrSessions
+      severity: Medium
+    - id: XR-UNDECLAREDSURVEILLANCE
+      description: "Recording or surveillance without disclosure in Cigness XR."
+      channel: XrEnvironment
+      severity: Critical
+
+binding:
+  datalake_pipeline: CIGNESS-HEALTH-PIPELINE
+  audit_contract: InstructionAudit
+  context_kinds:
+    - CIGNESS-HEALTH-INSTRUCTION
+    - CIGNESS-TOKEN-REWARD
