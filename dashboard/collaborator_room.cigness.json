@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "collaborators": [
     {
       "partner_id": "AZ_HEALTH_001",
@@ -122,6 +122,126 @@
         "Pima",
         "Maricopa",
         "Statewide"
+      ]
+    },
+    {
+      "partner_id": "AZCTA_001",
+      "contact_public_email": "azcta@lung.org",
+      "contact_public_url": "https://www.lung.org/az/azcta",
+      "public_statement": "AZCTA brings together community members, organizations, and partners to work on tobacco-free initiatives in Arizona.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "cessation_support",
+        "policy_enforcement"
+      ],
+      "events_hosted": 15,
+      "eco_events_hosted": 5,
+      "youth_engagement_events": 10,
+      "county_scope": [
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "ACAS_001",
+      "contact_public_email": "info@acasinc.net",
+      "contact_public_url": "https://acasinc.net/",
+      "public_statement": "ACAS works to save lives, improve health, and raise awareness through education and public action against smoking in Arizona.",
+      "areas_of_contribution": [
+        "tobacco_free_education",
+        "policy_enforcement"
+      ],
+      "events_hosted": 12,
+      "eco_events_hosted": 4,
+      "youth_engagement_events": 6,
+      "county_scope": [
+        "Maricopa",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "ASHLINE_001",
+      "contact_public_email": "info@ashline.org",
+      "contact_public_url": "https://helpersbehavioralhealth.org/pages/the-ashline",
+      "public_statement": "ASHLine offers free, confidential 24/7 tobacco cessation coaching for Arizona residents.",
+      "areas_of_contribution": [
+        "cessation_support",
+        "youth_prevention",
+        "behavioral_health_support"
+      ],
+      "events_hosted": 20,
+      "eco_events_hosted": 2,
+      "youth_engagement_events": 8,
+      "county_scope": [
+        "Pima",
+        "Maricopa",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "NAQC_001",
+      "contact_public_email": "info@naquitline.org",
+      "contact_public_url": "https://www.naquitline.org/",
+      "public_statement": "NAQC promotes evidence-based quitline services across diverse communities in North America, based in Phoenix.",
+      "areas_of_contribution": [
+        "cessation_support",
+        "public_health_data"
+      ],
+      "events_hosted": 18,
+      "eco_events_hosted": 3,
+      "youth_engagement_events": 5,
+      "county_scope": [
+        "Maricopa",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "PIMA_CTPC_001",
+      "contact_public_email": "health@pima.gov",
+      "contact_public_url": "https://www.pima.gov/2152/Commercial-Tobacco-Prevention-Cessation",
+      "public_statement": "Pima County program to reduce commercial tobacco and vaping use through prevention and cessation.",
+      "areas_of_contribution": [
+        "tobacco_free_education",
+        "youth_prevention",
+        "cessation_support"
+      ],
+      "events_hosted": 16,
+      "eco_events_hosted": 4,
+      "youth_engagement_events": 9,
+      "county_scope": [
+        "Pima"
+      ]
+    },
+    {
+      "partner_id": "AZSFL_001",
+      "contact_public_email": "info@azsmokefreeliving.org",
+      "contact_public_url": "http://www.azsmokefreeliving.org/about-us-2/",
+      "public_statement": "Advocating to protect Arizonans from secondhand smoke and aerosol from tobacco, marijuana, and e-cigarettes.",
+      "areas_of_contribution": [
+        "smoke_free_enforcement",
+        "tobacco_free_education"
+      ],
+      "events_hosted": 14,
+      "eco_events_hosted": 5,
+      "youth_engagement_events": 7,
+      "county_scope": [
+        "Maricopa",
+        "Statewide"
+      ]
+    },
+    {
+      "partner_id": "YAVAPAI_TP_001",
+      "contact_public_email": "health@yavapaiaz.gov",
+      "contact_public_url": "https://healthyyavapai.com/tobacco-prevention/",
+      "public_statement": "Yavapai County program to prevent tobacco use among youth and adults through education.",
+      "areas_of_contribution": [
+        "youth_prevention",
+        "tobacco_free_education"
+      ],
+      "events_hosted": 10,
+      "eco_events_hosted": 3,
+      "youth_engagement_events": 6,
+      "county_scope": [
+        "Yavapai"
       ]
     }
   ]
