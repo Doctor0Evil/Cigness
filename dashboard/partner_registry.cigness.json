@@ -1,0 +1,130 @@
+{
+  "version": "1.1.0",
+  "partners": [
+    {
+      "partner_id": "AZ_HEALTH_001",
+      "name": "Arizona Department of Health Services - Office of Tobacco Prevention and Cessation",
+      "organization_type": "state_agency",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "tobacco_free_education",
+        "youth_prevention",
+        "cessation_support"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.92,
+      "collaboration_status": "active",
+      "primary_contact_channel": "https://www.azdhs.gov"
+    },
+    {
+      "partner_id": "MARICOPA_SMOKEFREE_AZ",
+      "name": "Maricopa County Smoke-Free Arizona Program",
+      "organization_type": "county_health_department",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "smoke_free_enforcement",
+        "tobacco_free_education",
+        "youth_prevention"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.86,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation"
+    },
+    {
+      "partner_id": "MOHAVE_SMOKEFREE_AZ",
+      "name": "Mohave County Smokefree Arizona Program",
+      "organization_type": "county_health_department",
+      "city": "Kingman",
+      "county": "Mohave",
+      "programs_offered": [
+        "smoke_free_enforcement",
+        "tobacco_free_education"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.84,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://www.mohave.gov/departments/public-health/environmental-health/smokefree-arizona/"
+    },
+    {
+      "partner_id": "PHX_SCHOOL_DISTRICT_01",
+      "name": "Phoenix Union High School District",
+      "organization_type": "school_district",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "youth_prevention",
+        "xr_relaxation_labs",
+        "eco_action_programs"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.88,
+      "collaboration_status": "active",
+      "primary_contact_channel": "https://www.pxu.org"
+    },
+    {
+      "partner_id": "AZ_STAND_STATEWIDE",
+      "name": "Students Taking a New Direction (STAND) - Arizona Youth Tobacco Coalition",
+      "organization_type": "youth_coalition",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "youth_prevention",
+        "tobacco_free_education",
+        "policy_enforcement"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.9,
+      "collaboration_status": "pending",
+      "primary_contact_channel": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation"
+    },
+    {
+      "partner_id": "PIMA_STAND_COALITIONS",
+      "name": "Pima County STAND Youth Tobacco Coalitions",
+      "organization_type": "youth_coalition",
+      "city": "Tucson",
+      "county": "Pima",
+      "programs_offered": [
+        "youth_prevention",
+        "tobacco_free_education"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.87,
+      "collaboration_status": "pending",
+      "primary_contact_channel": "https://www.pima.gov/2157/Coalitions"
+    },
+    {
+      "partner_id": "MARICOPA_PUBLIC_HEALTH_YAC",
+      "name": "Maricopa County Public Health Youth Advisory Council (YAC)",
+      "organization_type": "youth_coalition",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "programs_offered": [
+        "youth_prevention",
+        "public_health_data"
+      ],
+      "youth_prevention_focus": true,
+      "eco_alignment_score": 0.85,
+      "collaboration_status": "pending",
+      "primary_contact_channel": "https://www.maricopa.gov/6011/Tobacco-Prevention-and-Cessation"
+    },
+    {
+      "partner_id": "HELPERS_BEHAVIORAL_HEALTH",
+      "name": "Helpers for Behavioral Health - University of Arizona",
+      "organization_type": "university_program",
+      "city": "Tucson",
+      "county": "Pima",
+      "programs_offered": [
+        "cessation_support",
+        "behavioral_health_support",
+        "tobacco_free_education"
+      ],
+      "youth_prevention_focus": false,
+      "eco_alignment_score": 0.8,
+      "collaboration_status": "invited",
+      "primary_contact_channel": "https://helpersbehavioralhealth.org"
+    }
+  ]
+}
