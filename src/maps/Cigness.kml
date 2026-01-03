@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1jxnZKGtl4lUtTIjP8ImANoWmnm5JM4It">
+	<name>Cigness</name>
+	<StyleMap id="__managed_style_066D918CF63CB9F52F69">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_112DA9C4563CB9F52F69</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_250F235CDD3CB9F52F69</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_250F235CDD3CB9F52F69">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ffd27619</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0FE4C761CF3CB9F52F66">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1275C546793CB9F52F68">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_50B8F527DB3CB9F52F68">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff6b7900</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_4D381618DF3CB9F52F68">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff6b7900</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_112DA9C4563CB9F52F69">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ffd27619</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_3298D51CFD3CB9F52F68">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_4D381618DF3CB9F52F68</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_50B8F527DB3CB9F52F68</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_262E82BA4F3CB9F52F68">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0</scale>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_15F983687A3CB9F52F63">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_049CDDDC873CB9F52F68">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1275C546793CB9F52F68</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_262E82BA4F3CB9F52F68</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_0CEAC500873CB9F52F63">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_15F983687A3CB9F52F63</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0FE4C761CF3CB9F52F66</styleUrl>
+		</Pair>
+	</StyleMap>
+
+	<Folder id="070C1289C23CB9F52F44">
+		<name>Phoenix Intervention Nodes</name>
+		<open>1</open>
+		<styleUrl>#__managed_style_0CEAC500873CB9F52F63</styleUrl>
+
+		<!-- 1) Downtown Calm Break Hub -->
+		<Placemark>
+			<name>R_Node_001 – Downtown Calm Break Hub</name>
+			<Point>
+				<coordinates>-112.0735,33.4475,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>R_Node_001</value></Data>
+				<Data name="node_type"><value>R</value></Data>
+				<Data name="anchor_location">
+					<value>CityScape transit &amp; retail cluster</value>
+				</Data>
+				<Data name="services">
+					<value>
+						calm_break_device_lending,
+						mindfulness_sessions,
+						EEG_neurofeedback_pilot,
+						smoking_cessation_counseling_referral
+					</value>
+				</Data>
+				<Data name="target_tiles">
+					<value>Tile_001,Tile_002</value>
+				</Data>
+				<Data name="augmented_citizen_integration">
+					<value>
+						AR_quit_routes,
+						XR_relaxation_pods,
+						digital_token_check_in
+					</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 2) Roosevelt Collection & Recycling -->
+		<Placemark>
+			<name>C_Node_001 – Roosevelt Collection &amp; Recycling</name>
+			<Point>
+				<coordinates>-112.0740,33.4585,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>C_Node_001</value></Data>
+				<Data name="node_type"><value>C</value></Data>
+				<Data name="anchor_location">
+					<value>Roosevelt Row / light-rail stop vicinity</value>
+				</Data>
+				<Data name="accepted_materials">
+					<value>
+						cigarette_butts,
+						PET_bottles,
+						HDPE_jugs,
+						PP_caps
+					</value>
+				</Data>
+				<Data name="daily_capacity_kg"><value>200</value></Data>
+				<Data name="incentive_scheme">
+					<value>
+						eco_points_per_kg,
+						transit_pass_credits,
+						cigness_token_non_monetary_rewards
+					</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 3) Downtown Policy Zone Anchor -->
+		<Placemark>
+			<name>P_Node_001 – Downtown Policy Zone Anchor</name>
+			<Point>
+				<coordinates>-112.0773,33.4483,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>P_Node_001</value></Data>
+				<Data name="node_type"><value>P</value></Data>
+				<Data name="anchor_location">
+					<value>Phoenix City Hall vicinity</value>
+				</Data>
+				<Data name="policies">
+					<value>
+						reduced_tobacco_retail_density,
+						smoke_free_outdoor_plazas,
+						priority_for_R_and_C_nodes,
+						zoning_alignment_with_TOR_rules
+					</value>
+				</Data>
+				<Data name="jurisdiction"><value>City_of_Phoenix</value></Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 4) South 19th Ave Micro-Factory -->
+		<Placemark>
+			<name>M_Node_001 – South 19th Ave Micro-Factory</name>
+			<Point>
+				<coordinates>-112.1015,33.4225,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>M_Node_001</value></Data>
+				<Data name="node_type"><value>M</value></Data>
+				<Data name="anchor_location">
+					<value>3210 S 19th Ave – recycling and materials hub area</value>
+				</Data>
+				<Data name="inputs">
+					<value>
+						PET_pellets,
+						HDPE_pellets,
+						PP_pellets,
+						cleaned_cigarette_filter_composites
+					</value>
+				</Data>
+				<Data name="outputs">
+					<value>
+						calm_break_device_shells,
+						reusable_crates,
+						emergency_water_containers
+					</value>
+				</Data>
+				<Data name="max_daily_output_devices"><value>500</value></Data>
+				<Data name="linked_collection_nodes">
+					<value>C_Node_001,C_Node_002</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 5) North Transfer Station Circularity Hub -->
+		<Placemark>
+			<name>M_Node_002 – North Transfer Station Circularity Hub</name>
+			<Point>
+				<coordinates>-112.1230,33.5630,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>M_Node_002</value></Data>
+				<Data name="node_type"><value>M</value></Data>
+				<Data name="anchor_location">
+					<value>North Phoenix transfer station &amp; MRF catchment</value>
+				</Data>
+				<Data name="role">
+					<value>
+						bulk_plastic_separation,
+						extrusion_feedstock_for_cigness_devices
+					</value>
+				</Data>
+				<Data name="municipal_partner"><value>Phoenix_Public_Works</value></Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 6) Medical Campus Calm Hub -->
+		<Placemark>
+			<name>R_Node_002 – Medical Campus Calm Hub</name>
+			<Point>
+				<coordinates>-112.0590,33.4800,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>R_Node_002</value></Data>
+				<Data name="node_type"><value>R</value></Data>
+				<Data name="anchor_location">
+					<value>Central medical campus area (hospital/clinic cluster)</value>
+				</Data>
+				<Data name="services">
+					<value>
+						clinician_linked_cessation_protocols,
+						relaxation_and_breathing_training,
+						non_nicotine_calm_break_devices
+					</value>
+				</Data>
+				<Data name="integration">
+					<value>
+						EHR_smoking_status_flags,
+						referral_to_cigness_program
+					</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 7) Parkside Collection Hub -->
+		<Placemark>
+			<name>C_Node_002 – Parkside Collection Hub</name>
+			<Point>
+				<coordinates>-112.0800,33.4700,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>C_Node_002</value></Data>
+				<Data name="node_type"><value>C</value></Data>
+				<Data name="anchor_location">
+					<value>Urban park / recreation area with known smoking activity</value>
+				</Data>
+				<Data name="accepted_materials">
+					<value>
+						cigarette_butts,
+						snack_wrappers,
+						PET_bottles
+					</value>
+				</Data>
+				<Data name="community_programs">
+					<value>
+						cleanup_events,
+						youth_education_on_tobacco_and_plastics
+					</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 8) Retail Density Policy Anchor -->
+		<Placemark>
+			<name>P_Node_002 – Retail Density Policy Anchor</name>
+			<Point>
+				<coordinates>-112.0900,33.4400,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>P_Node_002</value></Data>
+				<Data name="node_type"><value>P</value></Data>
+				<Data name="anchor_location">
+					<value>Commercial corridor with multiple tobacco-oriented retailers</value>
+				</Data>
+				<Data name="policies">
+					<value>
+						enforce_TOR_spacing_requirements,
+						limit_new_tobacco_licenses,
+						prioritize_cigness_supportive_retailers
+					</value>
+				</Data>
+				<Data name="reference">
+					<value>Phoenix_TOR_zoning_standards</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 9) Campus Calm & XR Lab -->
+		<Placemark>
+			<name>R_Node_003 – Campus Calm &amp; XR Lab</name>
+			<Point>
+				<coordinates>-112.0700,33.4200,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>R_Node_003</value></Data>
+				<Data name="node_type"><value>R</value></Data>
+				<Data name="anchor_location">
+					<value>University/college campus area (student services)</value>
+				</Data>
+				<Data name="services">
+					<value>
+						XR_based_relaxation_stations,
+						non_addictive_calm_break_devices,
+						peer_support_groups
+					</value>
+				</Data>
+				<Data name="research_integration">
+					<value>
+						neural_telemetry_opt_in,
+						smoke_free_streak_studies
+					</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+		<!-- 10) South Circularity & Logistics Node -->
+		<Placemark>
+			<name>C_Node_003 – South Circularity &amp; Logistics Node</name>
+			<Point>
+				<coordinates>-112.1100,33.3900,0</coordinates>
+			</Point>
+			<ExtendedData>
+				<Data name="node_id"><value>C_Node_003</value></Data>
+				<Data name="node_type"><value>C</value></Data>
+				<Data name="anchor_location">
+					<value>South Phoenix waste/logistics corridor</value>
+				</Data>
+				<Data name="role">
+					<value>
+						aggregation_of_citywide_cigarette_butt_streams,
+						pre_processing_for_micro_factories
+					</value>
+				</Data>
+				<Data name="linked_micro_factories">
+					<value>M_Node_001,M_Node_002</value>
+				</Data>
+			</ExtendedData>
+		</Placemark>
+
+	</Folder>
+</Document>
+</kml>
