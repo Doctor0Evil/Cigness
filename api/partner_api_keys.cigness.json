@@ -1,0 +1,122 @@
+{
+  "version": "1.1.0",
+  "description": "Production configuration for Cigness partner ingest keys. Public keys are shown here ONLY as placeholders; real secrets must be stored in a secure secret manager.",
+  "encryption": {
+    "algorithm": "aes-256-gcm",
+    "key_source": "secret_manager",
+    "key_identifier": "cigness-partner-api-key-kms",
+    "at_rest": true,
+    "in_transit": true
+  },
+  "storage_policy": {
+    "store_plaintext_keys": false,
+    "store_hashed_keys": true,
+    "hash_algorithm": "sha256",
+    "hash_prefix": "cigness_pk_",
+    "rotate_interval_days": 180,
+    "audit_log_enabled": true
+  },
+  "rate_limits": {
+    "default": {
+      "requests_per_minute": 60,
+      "burst": 120
+    },
+    "submit_eco_actions": {
+      "requests_per_minute": 120,
+      "burst": 240
+    },
+    "submit_youth_prevention_metrics": {
+      "requests_per_minute": 60,
+      "burst": 120
+    },
+    "submit_recycling_metrics": {
+      "requests_per_minute": 60,
+      "burst": 120
+    },
+    "submit_events": {
+      "requests_per_minute": 60,
+      "burst": 120
+    }
+  },
+  "permissions_catalog": {
+    "submit_eco_actions": {
+      "description": "Allows partner to POST eco action aggregates to Cigness ingest endpoints.",
+      "ingest_endpoints": [
+        "/api/ingest/eco_actions"
+      ]
+    },
+    "submit_events": {
+      "description": "Allows partner to POST public, non-personal event aggregates (e.g., outreach counts).",
+      "ingest_endpoints": [
+        "/api/ingest/events"
+      ]
+    },
+    "submit_recycling_metrics": {
+      "description": "Allows partner to POST aggregated recycling metrics such as plastics and cigarette butts collected.",
+      "ingest_endpoints": [
+        "/api/indgest/recycling_metrics",
+        "/api/ingest/recycling_metrics"
+      ]
+    },
+    "submit_youth_prevention_metrics": {
+      "description": "Allows partner to POST aggregated youth prevention metrics without personal identifiers.",
+      "ingest_endpoints": [
+        "/api/ingest/youth_prevention"
+      ]
+    }
+  },
+  "keys": [
+    {
+      "partner_id": "AZ_HEALTH_001",
+      "api_key_public": "pk_live_8f92ab1c-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_azdhs_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_eco_actions",
+        "submit_events",
+        "submit_recycling_metrics",
+        "submit_youth_prevention_metrics"
+      ],
+      "created_at": "2026-01-03T20:15:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Arizona Department of Health Services - Office of Tobacco Prevention and Cessation."
+    },
+    {
+      "partner_id": "PHX_SCHOOL_DISTRICT_01",
+      "api_key_public": "pk_live_2c91d0e4-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_puhsd_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_youth_prevention_metrics",
+        "submit_events"
+      ],
+      "created_at": "2026-01-03T20:20:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Phoenix Union High School District."
+    }
+  ],
+  "status_values": [
+    "active",
+    "suspended",
+    "revoked"
+  ],
+  "security": {
+    "log_auth_failures": true,
+    "max_auth_failures_per_hour": 20,
+    "auto_suspend_on_threshold": true,
+    "auto_suspend_status": "suspended"
+  },
+  "audit": {
+    "enabled": true,
+    "contract": "InstructionAudit",
+    "fields_hashed": [
+      "partner_id",
+      "api_key_hash",
+      "permissions"
+    ]
+  }
+}
