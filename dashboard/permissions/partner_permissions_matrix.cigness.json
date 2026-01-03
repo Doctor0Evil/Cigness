@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "partner_types": [
+    "state_agency",
+    "school_district",
+    "clinic_hospital",
+    "nonprofit_youth_org",
+    "environmental_org",
+    "municipal_partner",
+    "tribal_health_partner"
+  ],
+
+  "permissions": {
+    "api": {
+      "submit_eco_actions": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "submit_events": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "submit_recycling_metrics": [
+        "state_agency",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "submit_youth_prevention_metrics": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "pull_content_packs": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "pull_partner_resources": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "submit_policy_feedback": [
+        "state_agency",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ]
+    },
+
+    "dashboard": {
+      "public_dashboard": "all",
+      "partner_dashboard": "all",
+      "youth_prevention_dashboard": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "recycling_dashboard": [
+        "state_agency",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "policy_dashboard": [
+        "state_agency",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ]
+    },
+
+    "operations": {
+      "host_r_node": [
+        "state_agency",
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "host_c_node": [
+        "state_agency",
+        "nonprofit_youth_org",
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "host_m_node": [
+        "environmental_org",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "host_p_node": [
+        "state_agency",
+        "municipal_partner",
+        "tribal_health_partner"
+      ],
+      "run_youth_xr_labs": [
+        "school_district",
+        "clinic_hospital",
+        "nonprofit_youth_org",
+        "tribal_health_partner"
+      ],
+      "run_eco_action_events": "all"
+    }
+  }
+}
