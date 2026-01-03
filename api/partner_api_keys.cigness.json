@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Production configuration for Cigness partner ingest keys. Public keys are shown here ONLY as placeholders; real secrets must be stored in a secure secret manager.",
   "encryption": {
     "algorithm": "aes-256-gcm",
@@ -60,7 +60,7 @@
     "submit_youth_prevention_metrics": {
       "description": "Allows partner to POST aggregated youth prevention metrics without personal identifiers.",
       "ingest_endpoints": [
-        "/api/ingest/youth_prevention"
+        "api/ingest/youth_prevention"
       ]
     }
   },
@@ -96,6 +96,114 @@
       "rate_limit_profile": "default",
       "ip_allowlist": [],
       "notes": "Phoenix Union High School District."
+    },
+    {
+      "partner_id": "AZCTA_001",
+      "api_key_public": "pk_live_7d83bc5f-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_azcta_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_eco_actions",
+        "submit_events",
+        "submit_youth_prevention_metrics"
+      ],
+      "created_at": "2026-01-03T21:00:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Arizona's Community Tobacco-Free Alliance (AZCTA)."
+    },
+    {
+      "partner_id": "ACAS_001",
+      "api_key_public": "pk_live_6e74cd6g-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_acas_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_events",
+        "submit_eco_actions"
+      ],
+      "created_at": "2026-01-03T21:05:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Arizonans Concerned About Smoking, Inc. (ACAS)."
+    },
+    {
+      "partner_id": "ASHLINE_001",
+      "api_key_public": "pk_live_5f65de7h-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_ashline_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_youth_prevention_metrics",
+        "submit_events",
+        "submit_cessation_metrics"
+      ],
+      "created_at": "2026-01-03T21:10:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Arizona Smokers' Helpline (ASHLine)."
+    },
+    {
+      "partner_id": "NAQC_001",
+      "api_key_public": "pk_live_4g56ef8i-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_naqc_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_events",
+        "submit_cessation_metrics"
+      ],
+      "created_at": "2026-01-03T21:15:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "North American Quitline Consortium."
+    },
+    {
+      "partner_id": "PIMA_CTPC_001",
+      "api_key_public": "pk_live_3h47fg9j-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_pima_ctpc_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_eco_actions",
+        "submit_events",
+        "submit_youth_prevention_metrics"
+      ],
+      "created_at": "2026-01-03T21:20:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Pima County Commercial Tobacco Prevention & Cessation."
+    },
+    {
+      "partner_id": "AZSFL_001",
+      "api_key_public": "pk_live_2i38gh0k-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_azsfl_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_events",
+        "submit_eco_actions"
+      ],
+      "created_at": "2026-01-03T21:25:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Arizona Smoke-Free Living."
+    },
+    {
+      "partner_id": "YAVAPAI_TP_001",
+      "api_key_public": "pk_live_1j29hi1l-xxxx-xxxx-xxxx-xxxxxxxx",
+      "api_key_hash": "cigness_pk_yavapai_tp_sha256_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "permissions": [
+        "submit_youth_prevention_metrics",
+        "submit_events"
+      ],
+      "created_at": "2026-01-03T21:30:00Z",
+      "last_used_at": null,
+      "status": "active",
+      "rate_limit_profile": "default",
+      "ip_allowlist": [],
+      "notes": "Yavapai County Tobacco Prevention."
     }
   ],
   "status_values": [
