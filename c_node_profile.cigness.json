@@ -1,0 +1,152 @@
+{
+  "c_node_id": "C_Node_001",
+  "location": {
+    "city": "Phoenix",
+    "label": "Roosevelt Collection & Recycling",
+    "linked_kml_tile_ids": ["Tile_001", "Tile_002"]
+  },
+
+  "node_type": "C",
+  "role": [
+    "cigarette_butt_collection",
+    "plastic_recycling_intake",
+    "material_sorting",
+    "eco_incentive_distribution",
+    "device_takeback_point"
+  ],
+
+  "accepted_materials": {
+    "cigarette_related": [
+      "cigarette_butts",
+      "paper_wrappers",
+      "filter_composites_cleaned"
+    ],
+    "plastics": [
+      "PET_bottles",
+      "HDPE_jugs",
+      "PP_caps",
+      "LDPE_films",
+      "mixed_small_plastics"
+    ],
+    "other": [
+      "snack_wrappers",
+      "small_litter_items"
+    ]
+  },
+
+  "processing_capabilities": {
+    "daily_capacity_kg": 200,
+    "sorting": {
+      "optical_sorting": true,
+      "manual_sorting": true,
+      "butt_filter_separation": true
+    },
+    "pre_processing": {
+      "shredding": true,
+      "washing": true,
+      "pelletizing_ready_output": true
+    },
+    "output_streams": [
+      "PET_pellets",
+      "HDPE_pellets",
+      "PP_pellets",
+      "cleaned_filter_composites"
+    ]
+  },
+
+  "linked_micro_factories": [
+    "M_Node_001",
+    "M_Node_002"
+  ],
+
+  "eco_incentives": {
+    "reward_types": [
+      "eco_points",
+      "transit_pass_credits",
+      "cigness_token_non_monetary_rewards"
+    ],
+    "reward_logic": {
+      "per_kg_plastic": 10,
+      "per_kg_butts": 25,
+      "per_device_returned": 50
+    },
+    "youth_safe": true
+  },
+
+  "paperless_policy": {
+    "allow_printed_materials": false,
+    "digital_channels": [
+      "qr_web_portal",
+      "xr_overlay_info",
+      "digital_signage",
+      "mobile_app_opt_in"
+    ]
+  },
+
+  "environmental_policy": {
+    "zero_landfill_goal": true,
+    "recycled_content_target_percent": 90,
+    "takeback_required_for_devices": true,
+    "waste_stream_transparency": {
+      "public_dashboard": true,
+      "update_interval_days": 7
+    }
+  },
+
+  "community_engagement": {
+    "programs": [
+      "cleanup_events",
+      "youth_education_on_tobacco_and_plastics",
+      "eco_action_challenges",
+      "school_partnerships"
+    ],
+    "volunteer_tracking": true,
+    "integration_with_r_nodes": [
+      "R_Node_001",
+      "R_Node_002",
+      "R_Node_003"
+    ]
+  },
+
+  "telemetry": {
+    "local_only_fields": [
+      "raw_sorting_data",
+      "machine_runtime_metrics"
+    ],
+    "aggregated_upload_fields": [
+      "kg_plastics_collected",
+      "kg_butts_collected",
+      "eco_points_distributed",
+      "device_takebacks",
+      "youth_engagement_events",
+      "community_participation_counts"
+    ],
+    "privacy": {
+      "pseudonymous_ids": true,
+      "no_advertising_use": true,
+      "youth_data_stricter_retention_days": 30,
+      "adult_data_retention_days": 365
+    }
+  },
+
+  "tobacco_free_policy": {
+    "allow_smoking_visuals": false,
+    "allow_nicotine_promotions": false,
+    "allow_tobacco_branding": false,
+    "content_review_required": true
+  },
+
+  "governance": {
+    "operator": "City_of_Phoenix + Cigness_Consortium",
+    "audit_log_targets": [
+      "material_flow_integrity",
+      "reward_distribution_accuracy",
+      "environmental_policy_compliance",
+      "paperless_policy_compliance"
+    ],
+    "safety": {
+      "youth_protection": true,
+      "no_harm_policy": true
+    }
+  }
+}
