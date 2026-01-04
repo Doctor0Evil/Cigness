@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cigness: A Breath of Fresh Air</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* * Palette: Brilliant Blues & Fresh Greens (Vibrant/Medical/Nature)
+         * Primary Blue: #0984e3
+         * Cyan/Teal: #00cec9
+         * Vibrant Green: #00b894
+         * Accent Orange: #fdcb6e (for warnings/contrasts)
+         * Dark Text: #2d3436
+         * Light Bg: #dfe6e9 to #f5f6fa
+         */
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f6fa;
+            color: #2d3436;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Chart Container Styling Constraints - Mandatory */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constraint to prevent excessive width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px;
+        }
+
+        /* Responsive height adjustments */
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #0984e3;
+            transform: translateX(-50%);
+        }
+    </style>
+
+    <!-- 
+    NARRATIVE PLAN:
+    1. Header/Hook: Introduce Cigness as the natural evolution beyond smoking/vaping.
+    2. The Crisis: Visualizing the rise of youth vaping and the stagnation of quitting.
+    3. Environmental Toll: The hidden carbon and waste footprint of the tobacco/vape industry.
+    4. The Solution Comparison: Radar chart comparing Cigness (Neuro-Therapy) vs. Vapes vs. Cold Turkey.
+    5. How It Works: HTML-based process flow of the Neuro-Therapy mathematical model.
+    6. Projected Impact: Forecast of success rates and carbon reduction.
+    7. Conclusion/CTA: Call to research action.
+    
+    CHART SELECTION JUSTIFICATION (NO SVG):
+    1. Youth Trends -> Line Chart (Chart.js) -> Shows change over time.
+    2. Environmental Waste -> Doughnut Chart (Chart.js) -> Shows composition/proportion.
+    3. Method Comparison -> Radar Chart (Chart.js) -> Compares multiple variables (Safety, Cost, Efficacy).
+    4. Success Projections -> Bar Chart (Chart.js) -> Compares categorical data.
+    -->
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-teal-400 text-white p-8 md:p-16 shadow-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">CIGNESS</h1>
+            <p class="text-xl md:text-2xl font-light mb-8">Neuro-Therapy: The Mathematical Solution to Addiction</p>
+            <div class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-bold shadow-md">
+                <span>🧠 Restore The Mind</span> &nbsp;&bull;&nbsp; <span>🌿 Save The Planet</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto p-4 md:p-8 space-y-12">
+
+        <!-- Introduction -->
+        <section class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">The Double Threat: Addiction & Pollution</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Traditional smoking is a known killer, but the "safe" alternatives like vaping and e-cigarettes are creating a new generation of addicts while contributing toxic metal waste to our environment. <strong>Cigness</strong> proposes a radical shift: using non-invasive system metrics and mathematical neuro-therapy to treat the source of addiction in the mind, without the carbon footprint.
+            </p>
+        </section>
+
+        <!-- Section 1: The Youth Crisis (Line Chart) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+                <div class="bg-white rounded-xl shadow-md p-6 glass-card">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Youth Nicotine Trends</h3>
+                    <p class="text-sm text-gray-500 mb-4">
+                        While combustible cigarette use has declined, the introduction of vapes has caused a sharp spike in youth nicotine dependency. We are swapping one addiction for another.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="youthTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 space-y-4">
+                <h3 class="text-2xl font-bold text-gray-800 border-l-4 border-blue-500 pl-4">The Replacement Trap</h3>
+                <p class="text-gray-600">
+                    The data is alarming. As traditional smoking rates drop among teenagers, e-cigarette usage has skyrocketed. This isn't a cure; it's a transfer of revenue for big tobacco. 
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center text-gray-700">
+                        <span class="text-red-500 mr-2 text-xl">&#9888;</span> High heavy metal exposure from coils.
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <span class="text-red-500 mr-2 text-xl">&#9888;</span> Unknown long-term neurological effects.
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <span class="text-red-500 mr-2 text-xl">&#9888;</span> Early habit formation in minors.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: Environmental Impact (Doughnut Chart) -->
+        <section class="bg-white rounded-2xl shadow-lg p-8">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-teal-600">The Carbon Footprint of Addiction</h3>
+                <p class="max-w-2xl mx-auto text-gray-600 mt-2">
+                    It's not just about health. Cigarette butts are the most littered item on Earth, and vapes introduce lithium batteries and plastic into landfills. Cigness offers a <strong>zero-waste</strong> solution.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Stat Card 1 -->
+                <div class="text-center p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl text-teal-500 mb-2">&#127757;</div>
+                    <div class="text-3xl font-extrabold text-gray-800">4.5T</div>
+                    <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Butts Littered/Year</div>
+                </div>
+                <!-- Stat Card 2 -->
+                <div class="text-center p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl text-blue-500 mb-2">&#128672;</div>
+                    <div class="text-3xl font-extrabold text-gray-800">84M</div>
+                    <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Tons CO2 Equiv.</div>
+                </div>
+                <!-- Stat Card 3 -->
+                <div class="text-center p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl text-red-500 mb-2">&#128267;</div>
+                    <div class="text-3xl font-extrabold text-gray-800">High</div>
+                    <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">E-Waste Risk</div>
+                </div>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="chart-container">
+                    <canvas id="wasteChart"></canvas>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h4 class="text-xl font-bold mb-3">Tobacco Industry Waste Composition</h4>
+                    <p class="text-gray-600 mb-4">
+                        The manufacturing and disposal of smoking devices create a massive ecological debt. Plastics, chemicals, and non-biodegradable filters dominate the waste stream.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                        <strong class="text-green-700">The Cigness Advantage:</strong>
+                        <p class="text-sm text-green-800 mt-1">Neuro-Therapy requires 0 disposables, 0 lithium batteries, and produces 0 physical waste.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Methodology Comparison (Radar Chart) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-gray-800">Why Neuro-Therapy?</h3>
+                <p class="text-gray-600">
+                    Comparing the "Cigness" approach to current market solutions reveals distinct advantages. While patches address chemical dependency and vapes address the physical habit, both fail to address the root neurological drivers without side effects.
+                </p>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 font-bold">1</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Non-Invasive</h4>
+                            <p class="text-sm text-gray-500">No chemicals entering the bloodstream. Purely mathematical system metrics.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-teal-100 text-teal-500 font-bold">2</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Root Cause</h4>
+                            <p class="text-sm text-gray-500">Targets the brain's relaxation response directly, bypassing the need for nicotine simulation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h4 class="text-center font-bold text-gray-700 mb-2">Solution Attribute Comparison</h4>
+                <div class="chart-container">
+                    <canvas id="comparisonRadar"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Neuro-Therapy Process (HTML Flowchart) -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">The Cigness Algorithm</h2>
+                <p class="text-gray-600 mt-2">How we turn anxiety into calm without smoke.</p>
+            </div>
+            
+            <!-- Responsive Flowchart via Flex/Grid -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0">
+                
+                <!-- Step 1 -->
+                <div class="w-full md:w-1/4 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-red-400 h-full">
+                        <div class="text-4xl mb-3">&#128552;</div>
+                        <h4 class="font-bold text-lg mb-2">Trigger Event</h4>
+                        <p class="text-sm text-gray-500">Stress or habit triggers the neurological craving for nicotine.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:block text-gray-400 text-2xl">&#10145;</div>
+                <div class="md:hidden text-gray-400 text-2xl">&#11015;</div>
+
+                <!-- Step 2 -->
+                <div class="w-full md:w-1/4 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-blue-400 h-full">
+                        <div class="text-4xl mb-3">&#129302;</div>
+                        <h4 class="font-bold text-lg mb-2">System Metrics Analysis</h4>
+                        <p class="text-sm text-gray-500">Algorithm calculates bio-variables and dimensions for therapy.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:block text-gray-400 text-2xl">&#10145;</div>
+                <div class="md:hidden text-gray-400 text-2xl">&#11015;</div>
+
+                <!-- Step 3 -->
+                <div class="w-full md:w-1/4 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-teal-400 h-full">
+                        <div class="text-4xl mb-3">&#129496;</div>
+                        <h4 class="font-bold text-lg mb-2">Neuro-Stimulation</h4>
+                        <p class="text-sm text-gray-500">Targeted mental exercises and calming patterns are delivered.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:block text-gray-400 text-2xl">&#10145;</div>
+                <div class="md:hidden text-gray-400 text-2xl">&#11015;</div>
+
+                <!-- Step 4 -->
+                <div class="w-full md:w-1/4 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-green-400 h-full">
+                        <div class="text-4xl mb-3">&#127793;</div>
+                        <h4 class="font-bold text-lg mb-2">Natural Relief</h4>
+                        <p class="text-sm text-gray-500">Craving subsides naturally. No carbon emitted. No chemicals ingested.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5: Projected Success (Bar Chart) -->
+        <section class="bg-gray-800 text-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="chart-container">
+                    <canvas id="efficacyChart"></canvas>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-teal-300 mb-4">The Future of Quitting</h3>
+                    <p class="text-gray-300 mb-6">
+                        Current data suggests that cognitive behavioral and neuro-therapeutic approaches have higher long-term retention rates than nicotine replacement therapies (NRT), which often keep the user addicted to the substance, just in a different form.
+                    </p>
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <h5 class="font-bold text-white mb-1">Goal: Research & Evidence</h5>
+                        <p class="text-sm text-gray-400">
+                            We are seeking partners to formalize the mathematical equations behind Cigness into peer-reviewed clinical studies. The potential to reduce global youth addiction rates by <strong>40%</strong> is within reach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion & CTA -->
+        <footer class="text-center py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Help Us Solve The Puzzle</h2>
+            <p class="max-w-2xl mx-auto text-gray-600 mb-8">
+                Cigness is more than an idea; it's a necessary evolution for our health and our planet. Join us in finding the missing research and creating the scientific evidence needed to make this natural solution a reality.
+            </p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1">
+                Start The Research
+            </button>
+            <div class="mt-8 text-sm text-gray-400">
+                &copy; 2024 Cigness Initiative. All Data Simulated for Visualization Purposes.
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- CHART CONFIGURATION SCRIPT -->
+    <script>
+        // --- Utility Function: Label Wrapping (Mandatory) ---
+        function formatLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxLen) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- Common Chart Options ---
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false, // Mandatory for responsive containers
+            plugins: {
+                legend: {
+                    labels: {
+                        font: { family: "'Open Sans', sans-serif", size: 12 },
+                        usePointStyle: true,
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(45, 52, 54, 0.9)',
+                    padding: 12,
+                    cornerRadius: 8,
+                    callbacks: {
+                        // MANDATORY TOOLTIP CONFIGURATION
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Youth Nicotine Trends (Line) ---
+        const ctxYouth = document.getElementById('youthTrendChart').getContext('2d');
+        const youthDataLabels = ['2016', '2018', '2020', '2022', '2024'];
+        new Chart(ctxYouth, {
+            type: 'line',
+            data: {
+                labels: youthDataLabels,
+                datasets: [
+                    {
+                        label: 'Combustible Cigarettes',
+                        data: [18, 14, 9, 6, 4],
+                        borderColor: '#b2bec3', // Gray - fading out
+                        backgroundColor: 'rgba(178, 190, 195, 0.2)',
+                        tension: 0.4,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'E-Cigs & Vaping',
+                        data: [11, 21, 25, 27, 29],
+                        borderColor: '#0984e3', // Vibrant Blue - rising
+                        backgroundColor: 'rgba(9, 132, 227, 0.1)',
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#0984e3',
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: '% of Youth Users' }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 2: Environmental Waste (Doughnut) ---
+        const ctxWaste = document.getElementById('wasteChart').getContext('2d');
+        // Labels might be long, apply formatting
+        const rawWasteLabels = ['Cellulose Acetate Filters', 'Plastic Packaging', 'Lithium Ion Batteries', 'Chemical Residue', 'Paper & Foil'];
+        const formattedWasteLabels = rawWasteLabels.map(l => formatLabel(l));
+
+        new Chart(ctxWaste, {
+            type: 'doughnut',
+            data: {
+                labels: formattedWasteLabels,
+                datasets: [{
+                    data: [40, 25, 15, 10, 10],
+                    backgroundColor: [
+                        '#0984e3', // Blue
+                        '#00cec9', // Cyan
+                        '#fdcb6e', // Orange (Warning for batteries)
+                        '#ff7675', // Red (Chemicals)
+                        '#b2bec3'  // Gray
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '60%',
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: {
+                        position: 'right',
+                        labels: { boxWidth: 15 }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 3: Comparison Radar (Radar) ---
+        const ctxRadar = document.getElementById('comparisonRadar').getContext('2d');
+        const radarLabels = ['Safety (Non-Invasive)', 'Long-term Efficacy', 'Eco-Friendliness', 'Cost Effectiveness', 'Adherence Ease'];
+        const formattedRadarLabels = radarLabels.map(l => formatLabel(l));
+
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: formattedRadarLabels,
+                datasets: [
+                    {
+                        label: 'Cigness (Neuro-Therapy)',
+                        data: [95, 90, 100, 85, 80],
+                        borderColor: '#00b894', // Green
+                        backgroundColor: 'rgba(0, 184, 148, 0.2)',
+                        pointBackgroundColor: '#00b894',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Vaping/E-Cigs',
+                        data: [40, 30, 20, 60, 75],
+                        borderColor: '#fdcb6e', // Orange
+                        backgroundColor: 'rgba(253, 203, 110, 0.2)',
+                        pointBackgroundColor: '#fdcb6e',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Cold Turkey',
+                        data: [100, 15, 100, 100, 10],
+                        borderColor: '#b2bec3', // Gray
+                        backgroundColor: 'rgba(178, 190, 195, 0.2)',
+                        pointBackgroundColor: '#b2bec3',
+                        borderWidth: 2,
+                        hidden: true // Hide by default to keep chart clean
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0,0,0,0.1)' },
+                        grid: { color: 'rgba(0,0,0,0.1)' },
+                        pointLabels: {
+                            font: { size: 11, family: "'Open Sans', sans-serif" },
+                            color: '#636e72'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+
+        // --- Chart 4: Efficacy Projection (Bar) ---
+        const ctxEfficacy = document.getElementById('efficacyChart').getContext('2d');
+        const efficacyLabels = ['Nicotine Gum', 'Patches', 'Prescription Meds', 'Vaping', 'Cigness Goal'];
+        
+        new Chart(ctxEfficacy, {
+            type: 'bar',
+            data: {
+                labels: efficacyLabels,
+                datasets: [{
+                    label: '1-Year Success Rate (%)',
+                    data: [18, 21, 33, 25, 65], // 65 is the goal for Cigness
+                    backgroundColor: [
+                        '#636e72',
+                        '#636e72',
+                        '#636e72',
+                        '#fdcb6e', // Vaping warning color
+                        '#00b894'  // Cigness Success color
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#dfe6e9' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#dfe6e9' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
