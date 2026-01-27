@@ -1,4 +1,4 @@
-shard_id,user_id,days_since_quit_start,cigarettes_baseline_per_day,cigarettes_current_per_day,cigarettes_avoided_total,co2_kg_avoided,butt_litter_avoided_kg,eco_impact_score,ecosystem_region
+shard_id,user_id,days_since_quit_start,baseline_cigarettes_per_day,current_cigarettes_per_day,cigarettes_avoided_total,co2_kg_avoided,butt_litter_avoided_kg,eco_impact_score,ecosystem_region
 ecoquit_v1_0001,user_001,30,20,5,450,6.3,0.135,22.5,phoenix_urban
 ecoquit_v1_0002,user_002,90,15,0,1350,18.9,0.405,67.5,phoenix_urban
 ecoquit_v1_0003,user_003,60,10,2,480,6.72,0.144,24.0,mesa_suburban
