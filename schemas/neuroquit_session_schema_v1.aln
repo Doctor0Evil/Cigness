@@ -1,0 +1,13 @@
+shard NeuroQuitSessionV1 {
+  field shard_id            : String;  // unique row id
+  field user_id             : String;  // pseudonymous identifier
+  field timestamp_iso       : String;  // ISO-8601 UTC
+  field event_type          : String;  // CravingDetected|CravingResolved|Slip|CigaretteFreeDay|EcoMilestone
+  field craving_score       : Float;   // 0-1 from CravingBiophysicsModel
+  field frontal_theta_norm  : Float;   // 0-1 normalized theta power
+  field theta_coherence_fp  : Float;   // 0-1 fronto-parietal coherence
+  field heart_rate_bpm      : Float;   // beats per minute
+  field hrv_index           : Float;   // normalized HRV
+  field cigarettes_today    : Int;     // integer count
+  field ecosystem_region    : String;  // e.g. phoenix_urban
+}
