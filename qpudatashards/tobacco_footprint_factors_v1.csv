@@ -1,0 +1,5 @@
+region,co2_kg_per_cig,water_l_per_cig,butt_kg_per_cig,source_ref
+global_default,0.014,3.7,0.0003,"LCA meta-estimate 2018"
+phoenix_urban,0.014,3.7,0.0003,"Assumed global factors"
+mesa_suburban,0.014,3.7,0.0003,"Assumed global factors"
+tempe_campus,0.014,3.7,0.0003,"Assumed global factors"
