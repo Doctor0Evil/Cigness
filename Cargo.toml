@@ -1,0 +1,16 @@
+[package]
+name = "neuroquit-qlearn"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+csv = "1"
+thiserror = "1"
+chrono = { version = "0.4", features = ["serde"] }
+ndarray = "0.15"
+linfa = "0.7"      # classical ML toolbox, no unsafe control loops
+linfa-trees = "0.7"
+
+[dev-dependencies]
+serde_json = "1"
