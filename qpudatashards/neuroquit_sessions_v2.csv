@@ -1,0 +1,6 @@
+shard_id,user_id,timestamp_iso,event_type,craving_score,frontal_theta_norm,theta_coherence_fp,heart_rate_bpm,hrv_index,cigarettes_today,ecosystem_region
+neuroquit_sess_1001,user_001,2026-01-25T08:00:00Z,CravingDetected,0.78,0.72,0.81,92.0,0.45,5,phoenix_urban
+neuroquit_sess_1002,user_001,2026-01-25T08:12:00Z,CravingResolved,0.31,0.55,0.53,78.0,0.58,5,phoenix_urban
+neuroquit_sess_1003,user_002,2026-01-26T12:00:00Z,CigaretteFreeDay,0.14,0.40,0.35,70.0,0.62,0,phoenix_urban
+neuroquit_sess_1004,user_003,2026-01-26T18:30:00Z,Slip,0.90,0.80,0.88,95.0,0.40,3,mesa_suburban
+neuroquit_sess_1005,user_004,2026-01-27T07:45:00Z,EcoMilestone,0.38,0.50,0.44,76.0,0.55,10,tempe_campus
