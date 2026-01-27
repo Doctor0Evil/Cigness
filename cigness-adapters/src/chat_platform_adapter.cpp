@@ -1,3 +1,4 @@
+// cigness-adapters/src/chat_platform_adapter.cpp (example console implementation)
 #include "cigness/adapters/chat_platform_adapter.hpp"
 #include <iostream>
 
