@@ -1,0 +1,13 @@
+name: EcoRecycleCI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Mojo
+        run: sudo apt install mojo-lang
+      - name: Run Simulator
+        run: mojo src/main.mojo
+      - name: Test
+        run: mojo tests/test_recycle.mojo
