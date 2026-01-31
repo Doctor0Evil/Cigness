@@ -1,0 +1,11 @@
+Biomarker,System,Relevance,EcoValue,ProofHex
+Cortisol,HPA,StressCraving,0.75,0xA1B2C3D4E5F67890
+sAA,SNS,CessationFailure,0.68,0xF1E2D3C4B5A69708
+HRV,ANS,Resilience,0.82,0x1234567890ABCDEF
+IL-6,Immune,MentalHealth,0.71,0xFEDCBA0987654321
+Cotinine,PK,UrgeIntensity,0.79,0x1122334455667788
+Ghrelin,Appetite,StressResponse,0.65,0x9988776655443322
+DHEA,HPA,RelapseRisk,0.70,0xAABBCCDDEEFF0011
+TNF-alpha,Immune,Inflammation,0.73,0x2233445566778899
+Nicotine,PK,Dependence,0.80,0x33445566778899AA
+AMY1,Gene,sAAVariation,0.62,0x445566778899AABB
