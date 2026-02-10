@@ -1,0 +1,102 @@
+SECTION SubstanceEnvelopeSpec {
+    META {
+        version = "1.0.0";
+        author = "bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7";
+        did = "did:ion:EiD8J2b3K8k9Q8x9L7m2n4p1q5r6s7t8u9v0w1x2y3z4A5B6C7D8E9F0";
+        gpg_key = "brainpoolP256r1/B088B85F5F631492";
+        license = "CC0-1.0";
+        category = "diagnostic_only";
+        mode = "simulation";
+        actuation = "none";
+        capability_tier = "CapModelOnly";
+        education_only = true;
+        non_reward = true;
+        autodowngradeenabled = false;
+        roh_bound = 0.3;
+        stake_required = false;
+        policy_stack = ["BASEMEDICAL", "BASEENGINEERING"];
+        hex_stamp = "0x7a3f9c2b1e8d4a6f5c8b9d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f";
+        evolution_proposal_id = "evolve:substance_envelope_spec:v1";
+    }
+
+    ROW {
+        // Simulated pharmacokinetic inputs (from PK/PD engine)
+        plasma_concentration_caffeine_mg_per_l : f64; // [0.0, 10.0] — typical range: 0–5 mg/L after 100mg dose
+        plasma_concentration_nicotine_mg_per_l : f64; // [0.0, 0.5] — typical range: 0–0.3 mg/L after 1 cigarette
+        plasma_concentration_thc_ng_per_ml : f64;     // [0.0, 200.0] — typical range: 0–150 ng/mL after 10mg oral
+        receptor_occupancy_d2 : f64;                   // [0.0, 1.0] — dopamine D2 occupancy (nicotine, caffeine indirect)
+        receptor_occupancy_cb1 : f64;                  // [0.0, 1.0] — cannabinoid CB1 occupancy (THC)
+        adenosine_antagonism_pct : f64;                // [0.0, 100.0] — % of A1/A2A receptors blocked (caffeine)
+        dopamine_delta_naccumbens : f64;               // [−0.5, 2.0] — normalized ΔDA in nucleus accumbens (relative to baseline)
+        serotonin_delta_pfc : f64;                     // [−0.3, 0.5] — normalized Δ5-HT in prefrontal cortex
+        gaba_delta_amygdala : f64;                     // [−0.4, 0.3] — normalized ΔGABA in amygdala (stress modulation)
+        glutamate_delta_hippocampus : f64;             // [−0.2, 0.6] — normalized ΔGlu in hippocampus (memory/anticipation)
+
+        // Simulated behavioral/cognitive outputs (from Cognitive/Behavioral Feedback Module)
+        craving_intensity : f64;                       // [0.0, 1.0] — normalized craving probability
+        impulse_control_loss : f64;                    // [0.0, 1.0] — probability of failed inhibitory control
+        mood_depression : f64;                         // [0.0, 1.0] — low mood during withdrawal phase
+        anxiety_level : f64;                           // [0.0, 1.0] — somatic anxiety from withdrawal or overstimulation
+        alertness_state : f64;                         // [0.0, 1.0] — cognitive arousal (inversely related to adenosine blockade)
+        cognitive_fatigue : f64;                       // [0.0, 1.0] — accumulated neural resource depletion
+
+        // Biophysical mapping to Tree-of-Life axes (diagnostic-only, log-only)
+        // These are derived from the above via deterministic, non-actuating mapping functions
+        // They are NOT used in CapabilityState, ReversalConditions, or RoH calculation
+        // They are only for visualization, education, and fairness analysis in TreeOfLifeView
+        DECAY : f64;                                   // [0.0, 1.0] — derived from cognitive_fatigue + mood_depression + serotonin_delta_pfc
+        LIFEFORCE : f64;                               // [0.0, 1.0] — derived from alertness_state − craving_intensity − impulse_control_loss
+        POWER : f64;                                   // [0.0, 1.0] — derived from dopamine_delta_naccumbens + adenosine_antagonism_pct
+        FEAR : f64;                                    // [0.0, 1.0] — derived from anxiety_level + glutamate_delta_hippocampus
+        PAIN : f64;                                    // [0.0, 1.0] — derived from mood_depression + gaba_delta_amygdala + withdrawal phase flag
+    }
+
+    // Mathematical mapping functions (for implementation in Rust, not serialized)
+    // These are invariant-preserving, deterministic, and bounded
+    // All outputs are normalized to [0.0, 1.0] for Tree-of-Life axis compatibility
+    // No feedback loops into live biosignals or capability state
+    MAPPING {
+        DECAY = clamp(0.0, 1.0, (cognitive_fatigue * 0.6) + (mood_depression * 0.4));
+        LIFEFORCE = clamp(0.0, 1.0, (alertness_state * 0.5) − (craving_intensity * 0.3) − (impulse_control_loss * 0.2));
+        POWER = clamp(0.0, 1.0, (dopamine_delta_naccumbens * 0.4) + (adenosine_antagonism_pct * 0.005));
+        FEAR = clamp(0.0, 1.0, (anxiety_level * 0.7) + (glutamate_delta_hippocampus * 0.3));
+        PAIN = clamp(0.0, 1.0, (mood_depression * 0.5) + (gaba_delta_amygdala * 0.3) + (impulse_control_loss * 0.2));
+    }
+
+    // Validation invariants — enforced at serialization and deserialization
+    INVARIANT {
+        plasma_concentration_caffeine_mg_per_l >= 0.0 && plasma_concentration_caffeine_mg_per_l <= 10.0;
+        plasma_concentration_nicotine_mg_per_l >= 0.0 && plasma_concentration_nicotine_mg_per_l <= 0.5;
+        plasma_concentration_thc_ng_per_ml >= 0.0 && plasma_concentration_thc_ng_per_ml <= 200.0;
+        receptor_occupancy_d2 >= 0.0 && receptor_occupancy_d2 <= 1.0;
+        receptor_occupancy_cb1 >= 0.0 && receptor_occupancy_cb1 <= 1.0;
+        adenosine_antagonism_pct >= 0.0 && adenosine_antagonism_pct <= 100.0;
+        dopamine_delta_naccumbens >= -0.5 && dopamine_delta_naccumbens <= 2.0;
+        serotonin_delta_pfc >= -0.3 && serotonin_delta_pfc <= 0.5;
+        gaba_delta_amygdala >= -0.4 && gaba_delta_amygdala <= 0.3;
+        glutamate_delta_hippocampus >= -0.2 && glutamate_delta_hippocampus <= 0.6;
+        craving_intensity >= 0.0 && craving_intensity <= 1.0;
+        impulse_control_loss >= 0.0 && impulse_control_loss <= 1.0;
+        mood_depression >= 0.0 && mood_depression <= 1.0;
+        anxiety_level >= 0.0 && anxiety_level <= 1.0;
+        alertness_state >= 0.0 && alertness_state <= 1.0;
+        cognitive_fatigue >= 0.0 && cognitive_fatigue <= 1.0;
+        DECAY >= 0.0 && DECAY <= 1.0;
+        LIFEFORCE >= 0.0 && LIFEFORCE <= 1.0;
+        POWER >= 0.0 && POWER <= 1.0;
+        FEAR >= 0.0 && FEAR <= 1.0;
+        PAIN >= 0.0 && PAIN <= 1.0;
+        DECAY + LIFEFORCE + POWER + FEAR + PAIN <= 5.0; // trivial sum bound for sanity
+    }
+
+    // Metadata for audit trail and EvolutionProposalRecord linkage
+    AUDIT {
+        source_module = "substance_sim::pkpd_engine";
+        source_version = "1.0.0";
+        data_origin = "simulated";
+        neuroprint_tag = "SUBSTANCE-ENVELOPE-SIM";
+        tree_of_life_view_extension = true;
+        biophysical_envelope_type = "virtual";
+        reference_citation = "NIDA, 2020; Volkow et al., Nature Reviews Neuroscience, 2017; Juliano & Griffiths, Psychopharmacology, 2004";
+    }
+}
