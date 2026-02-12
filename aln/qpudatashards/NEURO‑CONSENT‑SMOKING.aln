@@ -1,0 +1,124 @@
+SECTION,NEURO-CONSENT-SMOKING-META
+ROW,meta,specid,scalar,specid,neuro-consent-smoking-v1,string,primarykey
+ROW,meta,specid,scalar,version,1.0.0,string,nonnull
+ROW,meta,specid,scalar,createdby,bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7,string,nonnull
+ROW,meta,specid,scalar,createdat,2026-02-11T00:00:00Z,timestamp,nonnull
+ROW,meta,specid,array,juristags,USFDAEUMDRNEURORIGHTS2023,string,nonnull
+ROW,meta,specid,scalar,roh_ceiling_read,0.30,float,nonnull
+ROW,meta,specid,scalar,hexstamp,0xNEURO-CONSENT-SMOKING-V1,string,nonnull
+
+SECTION,NEURO-CONSENT-SMOKING-INPUTS
+ROW,input,subject,scalar,subjectid,,string,nonnull
+ROW,input,subject,scalar,chronological_age_years,,float,nonnull
+ROW,input,subject,scalar,developmental_index,,float,clamp0.0,1.0
+ROW,input,subject,scalar,is_pregnant,,bool,nonnull
+ROW,input,subject,scalar,planning_pregnancy,,bool,nonnull
+
+ROW,input,exposure,scalar,has_nicotine_exposure,,bool,nonnull
+ROW,input,exposure,scalar,nicotine_packyears_equiv,,float,nullable
+ROW,input,exposure,scalar,e_cigarette_use,,bool,nonnull
+
+ROW,input,tree_of_fear_ref,scalar,tree_of_fear_node_id,,string,nullable
+ROW,input,tree_of_fear_ref,scalar,chemical_family,,string,nullable
+ROW,input,tree_of_fear_ref,scalar,roh_weight_neuro,,float,clamp0.0,1.0
+ROW,input,tree_of_fear_ref,scalar,time_maturity_band,,string,nullable
+ROW,input,tree_of_fear_ref,scalar,trunk_tag_consent_rights,,string,nullable
+ROW,input,tree_of_fear_ref,scalar,branch3_tag,,string,nullable
+
+ROW,input,indices,scalar,consent_competence_index,,float,clamp0.0,1.0
+ROW,input,indices,scalar,risk_perception_index,,float,clamp0.0,1.0
+ROW,input,indices,scalar,executive_function_index,,float,clamp0.0,1.0
+
+SECTION,NEURO-CONSENT-SMOKING-PARAMS
+ROW,param,threshold,scalar,age_band_child_max,10.0,float,nonnull
+ROW,param,threshold,scalar,age_band_adolescent_max,18.0,float,nonnull
+ROW,param,threshold,scalar,age_band_young_adult_max,25.0,float,nonnull
+
+ROW,param,threshold,scalar,min_consent_competence_global,0.70,float,nonnull
+ROW,param,threshold,scalar,min_consent_competence_nicotine,0.85,float,nonnull
+
+ROW,param,threshold,scalar,min_risk_perception_global,0.70,float,nonnull
+ROW,param,threshold,scalar,min_risk_perception_nicotine,0.85,float,nonnull
+
+ROW,param,threshold,scalar,min_executive_function_global,0.70,float,nonnull
+ROW,param,threshold,scalar,min_executive_function_nicotine,0.80,float,nonnull
+
+ROW,param,threshold,scalar,max_roh_weight_neuro_child,0.10,float,nonnull
+ROW,param,threshold,scalar,max_roh_weight_neuro_adolescent,0.20,float,nonnull
+ROW,param,threshold,scalar,max_roh_weight_neuro_young_adult,0.25,float,nonnull
+
+ROW,param,flags,array,forbidden_branch3_tags_reproductive,SEED,EMBRYO,string,nonnull
+
+SECTION,NEURO-CONSENT-SMOKING-DERIVED-BANDS
+ROW,derived,band,enum,age_band,CHILDADOLESCENTYOUNG_ADULTADULT,string,nonnull
+ROW,derived,band,enum,neuro_vulnerability_band,LOWMEDHIGH,string,nonnull
+
+SECTION,NEURO-CONSENT-SMOKING-OUTPUTS
+ROW,output,flag,scalar,consent_ok_general,,bool,nonnull
+ROW,output,flag,scalar,consent_ok_nicotine,,bool,nonnull
+ROW,output,flag,scalar,consent_warn_nicotine,,bool,nonnull
+ROW,output,flag,scalar,consent_breach_nicotine,,bool,nonnull
+
+ROW,output,flag,scalar,forbidden_reproductive_exposure,,bool,nonnull
+ROW,output,flag,scalar,violates_reproductive_guardrail,,bool,nonnull
+
+ROW,output,view,scalar,consent_explanation_code,,string,nonnull
+ROW,output,view,scalar,neuro_vulnerability_band_out,,string,nonnull
+
+SECTION,NEURO-CONSENT-SMOKING-RULES
+ROW,rule,age,condition,age_band_child,chronological_age_years age_band_child_max,string,readonly
+ROW,rule,age,condition,age_band_adolescent,age_band_child_max  chronological_age_years age_band_adolescent_max,string,readonly
+ROW,rule,age,condition,age_band_young_adult,age_band_adolescent_max  chronological_age_years age_band_young_adult_max,string,readonly
+ROW,rule,age,condition,age_band_adult,chronological_age_years  age_band_young_adult_max,string,readonly
+
+ROW,rule,vulnerability,condition,neuro_vuln_high,
+has_nicotine_exposure  age_band_adolescent  age_band_young_adult,string,readonly
+
+ROW,rule,roh,condition,roh_neuro_exceeds_child,
+age_band_child  roh_weight_neuro  max_roh_weight_neuro_child,string,readonly
+ROW,rule,roh,condition,roh_neuro_exceeds_adolescent,
+age_band_adolescent  roh_weight_neuro  max_roh_weight_neuro_adolescent,string,readonly
+ROW,rule,roh,condition,roh_neuro_exceeds_young_adult,
+age_band_young_adult  roh_weight_neuro  max_roh_weight_neuro_young_adult,string,readonly
+
+ROW,rule,consent,condition,consent_ok_global,
+consent_competence_index  min_consent_competence_global
+ risk_perception_index  min_risk_perception_global
+ executive_function_index  min_executive_function_global,string,readonly
+
+ROW,rule,consent,condition,consent_ok_for_nicotine_thresholds,
+consent_competence_index  min_consent_competence_nicotine
+ risk_perception_index  min_risk_perception_nicotine
+ executive_function_index  min_executive_function_nicotine,string,readonly
+
+ROW,rule,consent,condition,consent_ok_nicotine_def,
+consent_ok_for_nicotine_thresholds  !roh_neuro_exceeds_child
+ !roh_neuro_exceeds_adolescent  !roh_neuro_exceeds_young_adult,string,readonly
+
+ROW,rule,consent,condition,consent_warn_nicotine_def,
+has_nicotine_exposure  !consent_ok_nicotine_def  consent_ok_global,string,readonly
+
+ROW,rule,consent,condition,consent_breach_nicotine_def,
+has_nicotine_exposure  !consent_ok_global,string,readonly
+
+ROW,rule,repro,condition,forbidden_reproductive_exposure_def,
+(has_nicotine_exposure  (chemical_family ALKALOID  chemical_family PAH))
+ (is_pregnant  planning_pregnancy),string,readonly
+
+ROW,rule,repro,condition,violates_reproductive_guardrail_def,
+forbidden_reproductive_exposure_def
+ (branch3_tag IN forbidden_branch3_tags_reproductive),string,readonly
+
+SECTION,NEURO-CONSENT-SMOKING-INVARIANTS
+ROW,inv,nonactuation,condition,nocapabilitywrite,
+NEURO-CONSENT-SMOKING MUST NOT write CapabilityState,string,readonly
+ROW,inv,nonactuation,condition,noconsentwrite,
+NEURO-CONSENT-SMOKING MUST NOT write ConsentState,string,readonly
+ROW,inv,nonactuation,condition,nopolicystackwrite,
+NEURO-CONSENT-SMOKING MUST NOT write PolicyStack,string,readonly
+ROW,inv,nonactuation,condition,noenvelopewrite,
+NEURO-CONSENT-SMOKING MUST NOT write BiophysicalEnvelopeSpec or RoH models,string,readonly
+ROW,inv,guards,condition,not_transition_guard,
+Shard outputs MUST NOT be used as guards in CapabilityTransitionRequest or ReversalConditions,string,readonly
+
+FOOTER,END-NEURO-CONSENT-SMOKING
